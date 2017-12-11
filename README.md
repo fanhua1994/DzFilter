@@ -10,11 +10,13 @@
 ```
 
 ## 配置sqlite数据库
+```
 dbhelper.driver=org.sqlite.JDBC
 dbhelper.dburl=jdbc:sqlite:F:\\data_filter20171211.db
 dbhelper.dbuser=
 dbhelper.dbpass=
 dbhelper.is_mysql=false
+```
 
 ## 加入以下maven
 ```
