@@ -37,7 +37,21 @@ public class KeywordUtils {
 
         return htmlStr.trim(); //返回文本字符串 
     }
+
 	
+	/**
+	 * 过滤Js标签
+	 * @param htmlStr
+	 * @return
+	 */
+	public static String delJsTag(String htmlStr){ 
+        String regEx_script="<script[^>]*?>[\\s\\S]*?<\\/script>"; //定义script的正则表达式 
+         
+        Pattern p_script = Pattern.compile(regEx_script,Pattern.CASE_INSENSITIVE); 
+        Matcher m_script = p_script.matcher(htmlStr); 
+        htmlStr = m_script.replaceAll(""); //过滤script标签 
+        return htmlStr.trim(); //返回文本字符串 
+    }
 	
 	/**
 	 * 提取关键词  返回关键词
