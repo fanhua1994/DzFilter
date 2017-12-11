@@ -8,3 +8,25 @@
 加载时间 : 229ms
 我是***，我为自己代言
 ```
+
+## 配置sqlite数据库
+dbhelper.driver=org.sqlite.JDBC
+dbhelper.dburl=jdbc:sqlite:F:\\data_filter20171211.db
+dbhelper.dbuser=
+dbhelper.dbpass=
+dbhelper.is_mysql=false
+
+## 加入以下maven
+```
+<dependency>
+    <groupId>com.hankcs</groupId>
+    <artifactId>hanlp</artifactId>
+    <version>portable-1.5.2</version>
+</dependency>
+
+<dependency>
+	<groupId>org.xerial</groupId>
+	<artifactId>sqlite-jdbc</artifactId>
+	<version>3.7.2</version>
+</dependency> 
+```

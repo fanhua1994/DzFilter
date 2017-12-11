@@ -22,7 +22,7 @@
 	      <scope>test</scope>
 	    </dependency>
 	    
-	    <dependency>
+	<dependency>
 	    <groupId>com.hankcs</groupId>
 	    <artifactId>hanlp</artifactId>
 	    <version>portable-1.5.2</version>
