@@ -10,6 +10,7 @@
 ```
 
 ## 配置sqlite数据库
+> 数据库文件在项目目录下的database下。放到对应目录  配置好就行了
 ```
 dbhelper.driver=org.sqlite.JDBC
 dbhelper.dburl=jdbc:sqlite:F:\\data_filter20171211.db
