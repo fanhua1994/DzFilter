@@ -1,7 +1,6 @@
 package com.zhiweism.hanlp_demo;
 
 import com.zhiweism.text.database.FilterDao;
-import com.zhiweism.text.utils.TextUtils;
 
 /**
  * Hello world!

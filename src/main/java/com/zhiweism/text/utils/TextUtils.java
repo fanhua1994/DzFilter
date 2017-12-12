@@ -1,6 +1,7 @@
 package com.zhiweism.text.utils;
 
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -129,5 +130,22 @@ public class TextUtils {
 		return FilterDao.getInstance().delFilter(keywords);
 	}
 	
+	/**
+	 * 分页获取敏感词
+	 * @param page
+	 * @param num
+	 * @return
+	 */
+	public static List<Map<String,Object>> getData(int page,int num){
+		return FilterDao.getInstance().getFilterKeywords(page, num);
+	}
 	
+	
+	/***
+	 * 获取敏感词总数
+	 * @return
+	 */
+	public static int getDataTotal() {
+		return FilterDao.getInstance().getFilterCount();
+	}
 }
