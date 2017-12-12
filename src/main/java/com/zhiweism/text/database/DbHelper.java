@@ -35,7 +35,7 @@ public class DbHelper {
 			if(instance == null) {
 				Properties prop = new Properties();
 	     		try {
-					prop.load(DbHelper.class.getClassLoader().getResourceAsStream("filter_config.properties"));
+					prop.load(DbHelper.class.getClassLoader().getResourceAsStream("java_filter_config.properties"));
 					DBURL = prop.getProperty("dbhelper.dburl");
 					DBDRIVER = prop.getProperty("dbhelper.driver");
 					DBUSER = prop.getProperty("dbhelper.dbuser");
