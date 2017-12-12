@@ -30,7 +30,7 @@
 ```
 
 ## 配置sqlite数据库
-> 数据库文件在项目目录下的database下。放到对应目录  配置好就行了
+> 数据库文件在项目目录下的database下。放到对应目录  配置好就行了。如果想使用mysql的话，请自行导入mysql驱动，并将database目录下的java_filter.sql导入mysql然后在filter_config.properties配置 用户名密码等信息即可。
 ```
 dbhelper.driver=org.sqlite.JDBC
 dbhelper.dburl=jdbc:sqlite:F:\\data_filter20171211.db
