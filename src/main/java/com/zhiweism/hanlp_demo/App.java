@@ -1,6 +1,7 @@
 package com.zhiweism.hanlp_demo;
 
-import com.zhiweism.text.keywords.KeywordUtils;
+import com.zhiweism.text.database.FilterDao;
+import com.zhiweism.text.utils.TextUtils;
 
 /**
  * Hello world!
@@ -10,7 +11,7 @@ public class App
 {
     public static void main( String[] args )
     {
-    	String result = KeywordUtils.delTag("4324<html>2342342</html>3<script type='javascript'>rrrrr</script>啊啊啊");
+    	int result = FilterDao.getInstance().getFilterCount();
     	System.out.println(result);
     }
 }

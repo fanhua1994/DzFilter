@@ -20,18 +20,10 @@ import java.util.Properties;
 public class DbHelper {
 	
 	private static DbHelper instance = null;
-	//com.mysql.jdbc.Driver
-	//org.sqlite.JDBC
-    private static String DBDRIVER = "org.sqlite.JDBC";  
-    //连接地址是由各个数据库生产商单独提供的，所以需要单独记住  
-    //jdbc:mysql://115.159.88.186:3306/chat
-    //jdbc:sqlite:test.db
-    private static String DBURL = "jdbc:sqlite:F:\\data_filter20171211.db";  
-    //连接数据库的用户名  
-    private static String DBUSER = "root";  //MYSQL 专享
-    //连接数据库的密码  
-    private static String DBPASS = "candy0748";//MYSQL 专享
-    //是SQlite还是Mysql
+    private static String DBDRIVER = null;  
+    private static String DBURL = null;  
+    private static String DBUSER = null;  //MYSQL 专享
+    private static String DBPASS = null;//MYSQL 专享
     private static Boolean ISMYSQL = false;
 	
 	/**

@@ -1,17 +1,21 @@
-package com.zhiweism.text.keywords;
+package com.zhiweism.text.utils;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.hankcs.hanlp.HanLP;
+import com.zhiweism.text.database.DbHelper;
+import com.zhiweism.text.database.FilterDao;
+import com.zhiweism.text.filter.WordFilter;
+import com.zhiweism.text.keywords.ChineseToPinyin;
 
 /**
  * 关键词辅助类
  * @author Administrator
  *
  */
-public class KeywordUtils {
+public class TextUtils {
 	
 	/**
 	 * 过滤所有标签
@@ -96,5 +100,34 @@ public class KeywordUtils {
 		return sb.toString();
 	}
 	
-
+	
+	/**
+	 * 过滤敏感词
+	 * @param content
+	 * @return
+	 */
+	public static String filter(String content) {
+		return WordFilter.doFilter(content);
+	}
+	
+	/**
+	 * 添加敏感词
+	 * @param keywords
+	 * @return
+	 */
+	public static boolean addFilter(String keywords) {
+		return FilterDao.getInstance().addFilter(keywords);
+	}
+	
+	
+	/**
+	 * 删除敏感词
+	 * @param keywords
+	 * @return
+	 */
+	public static boolean delFilter(String keywords) {
+		return FilterDao.getInstance().delFilter(keywords);
+	}
+	
+	
 }
