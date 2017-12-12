@@ -1,6 +1,25 @@
 # JavaFilterDemo
 使用DFA算法实现的敏感词过滤，包括关键词提取，自动摘要，过滤html标签等。主要用于实现数据的清洗和数据快速定位。
 
+# 如何使用
+## 导入以下仓库
+```
+<repositories>
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+</repositories>
+```
+## 添加Dependency
+```
+<dependency>
+    <groupId>com.github.fanhua1994</groupId>
+    <artifactId>JavaFilter</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+## TextUtils使用请看源码
 
 ## 过滤日志
 > 过滤库仅仅加载一次，会全部加载到内存，所以要注意不能大于5000个。
@@ -20,17 +39,4 @@ dbhelper.dbpass=
 dbhelper.is_mysql=false
 ```
 
-## 加入以下maven
-```
-<dependency>
-    <groupId>com.hankcs</groupId>
-    <artifactId>hanlp</artifactId>
-    <version>portable-1.5.2</version>
-</dependency>
 
-<dependency>
-	<groupId>org.xerial</groupId>
-	<artifactId>sqlite-jdbc</artifactId>
-	<version>3.7.2</version>
-</dependency> 
-```
