@@ -78,7 +78,10 @@ public class TextUtils {
 			sb.append(separator);
 		}
 		data.clear();
-		return sb.toString().substring(0,sb.length() - 1);
+		if(sb.length() > 0)
+			return sb.toString().substring(0,sb.length() - 1);
+		else
+			return ChineseToPinyin.getFullSpell(content);
 	}
 	
 	public static List<String> extractKeyword(String content,int count){
