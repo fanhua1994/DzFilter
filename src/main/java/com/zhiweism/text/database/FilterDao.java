@@ -3,9 +3,10 @@ package com.zhiweism.text.database;
 import java.util.List;
 import java.util.Map;
 
+import com.zhiweism.text.filter.WordFilter;
+
 public class FilterDao {
 	private static FilterDao instance = null;
-	
 	
 	public static synchronized FilterDao getInstance() {
 		synchronized (FilterDao.class) {
@@ -22,7 +23,9 @@ public class FilterDao {
 	 * @return
 	 */
 	public boolean addFilter(String keywords) {
-		return DbHelper.getInstance().executeUpdate("insert into filter_wd(keywords)values('%s')", keywords);
+		boolean isok = DbHelper.getInstance().executeUpdate("insert into filter_wd(keywords)values('%s')", keywords);
+		WordFilter.resetInit();
+		return isok;
 	}
 
 	/**
@@ -31,7 +34,9 @@ public class FilterDao {
 	 * @return
 	 */
 	public boolean delFilter(String keywords) {
-		return DbHelper.getInstance().executeUpdate("delete from filter_wd where keywords='%s'", keywords);
+		boolean isok = DbHelper.getInstance().executeUpdate("delete from filter_wd where keywords='%s'", keywords);
+		WordFilter.resetInit();
+		return isok;
 	}
 	
 	/**

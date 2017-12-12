@@ -20,29 +20,37 @@ import com.zhiweism.text.database.DbHelper;
  * @version 2.2
  */
 public class WordFilter {
-	private enum WD_TYPE {FILTER,STOP};
-	private static final FilterSet set = new FilterSet(); // 存储首字
-	private static final Map<Integer, WordNode> nodes = new HashMap<Integer, WordNode>(1024, 1); // 存储节点
-	private static final Set<Integer> stopwdSet = new HashSet<Integer>(); // 停顿词
-	private static final char SIGN = '*'; // 敏感词过滤替换
+	private enum FilterState{SUCCESS,ERROR};
+	private enum KeywordType {FILTER,STOP};
+	private static FilterState FilterStatus =  FilterState.ERROR;
+	private static FilterSet set = new FilterSet(); // 存储首字
+	private static Map<Integer, WordNode> nodes = new HashMap<Integer, WordNode>(2048, 1); // 存储节点
+	private static Set<Integer> stopwdSet = new HashSet<Integer>(); // 停顿词
+	private static char SIGN = '*'; // 敏感词过滤替换
 
-	static {
-		try {
-			long a = System.nanoTime();
-			init();
-			a = System.nanoTime() - a;
-			System.out.println("加载时间 : " + a + "ns");
-			System.out.println("加载时间 : " + a / 1000000 + "ms");
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("初始化过滤器失败");
+	
+	/**
+	 * 初始化
+	 */
+	public static void init() {
+		// 获取敏感词
+		if(FilterStatus == FilterState.ERROR) {
+			long time1 = System.currentTimeMillis();
+			addSensitiveWord(readWordFromFile(KeywordType.FILTER));
+			addStopWord(readWordFromFile(KeywordType.STOP));
+			long time2 = System.currentTimeMillis();
+			System.out.println("敏感词数量:"+nodes.size());
+			System.out.println("加载过滤库时间" + (time2 - time1) +"ms");
+			FilterStatus = FilterState.SUCCESS;
 		}
 	}
-
-	private static void init() {
-		// 获取敏感词
-		addSensitiveWord(readWordFromFile(WD_TYPE.FILTER));
-		addStopWord(readWordFromFile(WD_TYPE.STOP));
+	/**
+	 * 设置
+	 * @param fs
+	 */
+	public static void resetInit() {
+		addSensitiveWord(readWordFromFile(KeywordType.FILTER));
+		System.out.println("敏感词数量:" + nodes.size());
 	}
 
 	/**
@@ -50,10 +58,10 @@ public class WordFilter {
 	 * @param path
 	 * @return
 	 */
-	private static List<String> readWordFromFile(WD_TYPE type) {
+	private static List<String> readWordFromFile(KeywordType type) {
 		List<String> words = new ArrayList<String>();
 		List<Map<String,Object>> data = null;
-		if(type == WD_TYPE.FILTER)
+		if(type == KeywordType.FILTER)
 			data = DbHelper.getInstance().select("select keywords from filter_wd");
 		else
 			data = DbHelper.getInstance().select("select keywords from stop_wd");
@@ -62,7 +70,6 @@ public class WordFilter {
 			words.add(rows.get("keywords").toString());
 		}
 		data.clear();
-		 
 		return words;
 	}
 
@@ -121,6 +128,7 @@ public class WordFilter {
 	 * @return
 	 */
 	public static final String doFilter(final String src) {
+		init();
 		char[] chs = src.toCharArray();
 		int length = chs.length;
 		int currc;
@@ -140,8 +148,6 @@ public class WordFilter {
 				couldMark = true;
 				markNum = 0;
 			}
-			// 继续匹配（日你/日你妹），以长的优先
-			// 你-3 妹-4 夫-5
 			k = i;
 			for (; ++k < length;) {
 				int temp = charConvert(chs[k]);
