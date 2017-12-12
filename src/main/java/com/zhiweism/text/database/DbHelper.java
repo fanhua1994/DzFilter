@@ -51,6 +51,14 @@ public class DbHelper {
 	}
 	
 	/**
+	 * 是否是mysql数据库
+	 * @return
+	 */
+	public boolean isMYSQL() {
+		return ISMYSQL;
+	}
+	
+	/**
 	 * 创建服务器连接
 	 * @return
 	 */
@@ -236,5 +244,16 @@ public class DbHelper {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	
+	/**
+	 * 判断sqlite表是否存在
+	 * @param table
+	 * @return
+	 */
+	public boolean existTable(String table) {
+		int res = fieldInt("select count(*)  from sqlite_master where type='table' and name = '%s'", table);
+		return res == 1;
 	}
 }

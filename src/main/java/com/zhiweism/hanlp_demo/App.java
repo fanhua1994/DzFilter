@@ -1,5 +1,6 @@
 package com.zhiweism.hanlp_demo;
 
+import com.zhiweism.text.database.DbHelper;
 import com.zhiweism.text.database.FilterDao;
 
 /**
@@ -10,7 +11,7 @@ public class App
 {
     public static void main( String[] args )
     {
-    	int result = FilterDao.getInstance().getFilterCount();
+    	boolean result = DbHelper.getInstance().existTable("filter_wd");
     	System.out.println(result);
     }
 }
