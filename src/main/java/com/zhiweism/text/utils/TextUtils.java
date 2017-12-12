@@ -6,7 +6,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.hankcs.hanlp.HanLP;
-import com.zhiweism.text.database.DbHelper;
 import com.zhiweism.text.database.FilterDao;
 import com.zhiweism.text.filter.WordFilter;
 import com.zhiweism.text.keywords.ChineseToPinyin;
