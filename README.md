@@ -32,11 +32,26 @@
 ## 配置sqlite数据库
 > 数据库文件在项目目录下的database下。放到对应目录  配置好就行了。如果想使用mysql的话，请自行导入mysql驱动，并将database目录下的java_filter.sql导入mysql然后在filter_config.properties配置 用户名密码等信息即可。
 ```
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.45</version>
+</dependency>
+```
+Mysql配置文件如下
+```
+dbhelper.driver=com.mysql.jdbc.Driver
+dbhelper.dburl=jdbc:mysql://120.77.245.101:3306/filter_word?useUnicode\=true&characterEncoding\=utf-8&autoReconnect\=true
+dbhelper.dbuser=root
+dbhelper.dbpass=****
+dbhelper.is_mysql=true
+```
+SQLite配置文件如下
+```
 dbhelper.driver=org.sqlite.JDBC
 dbhelper.dburl=jdbc:sqlite:F:\\data_filter20171211.db
 dbhelper.dbuser=
 dbhelper.dbpass=
 dbhelper.is_mysql=false
 ```
-
-
