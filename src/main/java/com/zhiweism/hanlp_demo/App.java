@@ -6,6 +6,7 @@ package com.zhiweism.hanlp_demo;
  */
 public class App 
 {
+	
     public static void main( String[] args )
     {
     	
