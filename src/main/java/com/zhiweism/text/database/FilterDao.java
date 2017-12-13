@@ -50,6 +50,10 @@ public class FilterDao {
 		return DbHelper.getInstance().select("select keywords from filter_wd limit %d,%d", offset,num);
 	}
 	
+	public List<Map<String,Object>> getFilterKeywords2(int offset,int limit){
+		return DbHelper.getInstance().select("select keywords from filter_wd limit %d,%d", offset,limit);
+	}
+	
 	public int getFilterCount() {
 		return DbHelper.getInstance().fieldInt("select count(*) as total from filter_wd");
 	}

@@ -1,5 +1,15 @@
 # JavaFilterDemo
-使用DFA算法实现的敏感词过滤，包括关键词提取，自动摘要，过滤html标签等。主要用于实现数据的清洗和数据快速定位。
+使用DFA算法实现的敏感词过滤。主要用于实现数据文本的反垃圾，携带文本的关键词获取，自动摘要。
+
++ 过滤SQL脚本
++ 过滤中文字符
++ 过滤英文字符
++ 过滤script标签
++ 过滤html标签
++ 过滤数字
++ 过滤字母
++ 过滤汉字
++ 自定义过滤，可由后台自动删除添加。提供完善的API。位于FilterDao文件下。
 
 # 如何使用
 ## 导入以下仓库
@@ -56,3 +66,24 @@ dbhelper.dbuser=
 dbhelper.dbpass=
 dbhelper.is_mysql=false
 ```
+
+## 如何自定义过滤服务
+
+### 添加自定义关键词过滤
+```
+Boolean res = TextUtils.addFilter(String keywords);
+```
+### 删除自定义关键词过滤
+```
+boolean res = TextUtils.delFilter(String keywords);
+```
+### 分页获取添加的关键词
+```
+List<Map<String,Object>> rows = TextUtils.getDataPage(int page,int num);//第一个参数页数 1开始 第二个参数每页条数
+List<Map<String,Object>> rows = TextUtils.getDataOffset(int offset,int limit);第一个参数偏移量 0开始 第二个参数每页条数
+```
+### 自定义关键词总数
+```
+int total = TextUtils.getDataTotal();
+```
+

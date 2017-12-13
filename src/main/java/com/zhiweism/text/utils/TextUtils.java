@@ -18,6 +18,88 @@ import com.zhiweism.text.keywords.ChineseToPinyin;
 public class TextUtils {
 	
 	/**
+	 * 过滤
+	 * @param key
+	 * @return
+	 */
+	public static String delSqlSymbol(String key) {
+		String regEx="(select|insert|update|delete)"; 
+		Pattern p = Pattern.compile(regEx); 
+		Matcher m = p.matcher(key);
+		return m.replaceAll("").trim();
+	}
+	
+	
+	/**
+	 * 删除所有符号  包括中文和英文
+	 * @param key
+	 * @return
+	 */
+	public static String delAllSymbol(String key){
+		String regEx="[~！@#￥%……&*（）——+|{}：。”“？》《~!@#$%^&*()_+|{}:\"<>?.]"; 
+		Pattern p = Pattern.compile(regEx); 
+		Matcher m = p.matcher(key);
+		return m.replaceAll("").trim();
+	}
+
+	/**
+	 * 过滤中文所有符号
+	 * @param key
+	 * @return
+	 */
+	public static String delChineseSymbol(String key){
+		String regEx="[~！@#￥%……&*（）——+|{}：。”“？》《]"; 
+		Pattern p = Pattern.compile(regEx); 
+		Matcher m = p.matcher(key);
+		return m.replaceAll("").trim();
+	}
+	
+	/**
+	 * 过滤英文符号
+	 * @param key
+	 * @return
+	 */
+	public static String delEnglishSymbol(String key){
+		String regEx="[~!@#$%^&*()_+|{}:\\\"<>?.]"; 
+		Pattern p = Pattern.compile(regEx); 
+		Matcher m = p.matcher(key);
+		return m.replaceAll("").trim();
+	}
+	
+	/**
+	 * 过滤字母
+	 * @param key
+	 * @return
+	 */
+	public static String delWordChar(String key){
+		String regEx="[A-Za-z]"; 
+		Pattern p = Pattern.compile(regEx); 
+		Matcher m = p.matcher(key);
+		return m.replaceAll("").trim();
+	}
+	
+	
+	/**
+	 * 过滤中文汉字
+	 * @param key
+	 * @return
+	 */
+	public static String delChineseChar(String key){
+		String regEx="[\\u4e00-\\u9fa5]"; 
+		Pattern p = Pattern.compile(regEx); 
+		Matcher m = p.matcher(key);
+		return m.replaceAll("").trim();
+	}
+	
+	public static String delNumberChar(String key) {
+		String regEx="[0-9]"; 
+		Pattern p = Pattern.compile(regEx); 
+		Matcher m = p.matcher(key);
+		return m.replaceAll("").trim();
+	}
+	
+	
+	/**
 	 * 过滤所有标签
 	 * @param htmlStr
 	 * @return
@@ -138,8 +220,18 @@ public class TextUtils {
 	 * @param num
 	 * @return
 	 */
-	public static List<Map<String,Object>> getData(int page,int num){
+	public static List<Map<String,Object>> getDataPage(int page,int num){
 		return FilterDao.getInstance().getFilterKeywords(page, num);
+	}
+	
+	/**
+	 * 分页获取敏感词
+	 * @param page
+	 * @param num
+	 * @return
+	 */
+	public static List<Map<String,Object>> getDataOffset(int offset,int limit){
+		return FilterDao.getInstance().getFilterKeywords2(offset, limit);
 	}
 	
 	
