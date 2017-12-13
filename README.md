@@ -25,7 +25,7 @@
 <dependency>
     <groupId>com.github.fanhua1994</groupId>
     <artifactId>JavaFilter</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.5</version>
 </dependency>
 ```
 
