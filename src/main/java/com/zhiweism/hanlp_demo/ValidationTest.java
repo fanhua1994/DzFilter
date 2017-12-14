@@ -1,7 +1,7 @@
 package com.zhiweism.hanlp_demo;
 
+import com.zhiweism.text.common.ValidMsg;
 import com.zhiweism.text.utils.Validation;
-import com.zhiweism.text.validation.ValidMsg;
 
 public class ValidationTest {
 	

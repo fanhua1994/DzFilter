@@ -1,4 +1,4 @@
-package com.zhiweism.text.validation;
+package com.zhiweism.text.common;
 /**
  * 公用的正则表达式
  * @author Administrator

@@ -1,4 +1,4 @@
-package com.zhiweism.text.validation;
+package com.zhiweism.text.common;
 
 public class ValidMsg {
 	private boolean pass;

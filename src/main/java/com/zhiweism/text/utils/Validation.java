@@ -6,13 +6,13 @@ import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.zhiweism.text.common.ValidMsg;
 import com.zhiweism.text.validation.IntCheck;
 import com.zhiweism.text.validation.IntSize;
 import com.zhiweism.text.validation.NoEmpty;
 import com.zhiweism.text.validation.Regex;
 import com.zhiweism.text.validation.StringCheck;
 import com.zhiweism.text.validation.StringSize;
-import com.zhiweism.text.validation.ValidMsg;
 
 /**
  * 表单验证

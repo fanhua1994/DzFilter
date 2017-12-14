@@ -1,9 +1,9 @@
 package com.zhiweism.hanlp_demo;
 
+import com.zhiweism.text.common.Regexs;
 import com.zhiweism.text.validation.IntSize;
 import com.zhiweism.text.validation.NoEmpty;
 import com.zhiweism.text.validation.Regex;
-import com.zhiweism.text.validation.Regexs;
 import com.zhiweism.text.validation.StringCheck;
 import com.zhiweism.text.validation.StringSize;
 
@@ -16,7 +16,7 @@ public class User {
 	private String sex;
 	
 	//匹配中文出现小问题
-	@Regex(value=Regexs.CHINESE,message="请输入中文名称")
+	//@Regex(value=Regexs.CHINESE,message="请输入中文名称")
 	@StringSize(message="请输入4个字以内的中文",minvalue=2,maxvalue=4)
 	private String name;
 	
