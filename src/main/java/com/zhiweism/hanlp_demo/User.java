@@ -1,20 +1,32 @@
 package com.zhiweism.hanlp_demo;
 
+import com.zhiweism.text.validation.IntSize;
 import com.zhiweism.text.validation.NoEmpty;
+import com.zhiweism.text.validation.Regex;
+import com.zhiweism.text.validation.Regexs;
+import com.zhiweism.text.validation.StringCheck;
+import com.zhiweism.text.validation.StringSize;
 
 public class User {
 	
+	@IntSize(message="年龄不能小于10不能大于100",minvalue=10,maxvalue=100)
 	private Integer age;
 	
+	@StringCheck(message="请选择正确的性别",value= {"男","女"})
 	private String sex;
 	
+	//匹配中文出现小问题
+	@Regex(value=Regexs.CHINESE,message="请输入中文名称")
+	@StringSize(message="请输入4个字以内的中文",minvalue=2,maxvalue=4)
 	private String name;
 	
-	@NoEmpty(message="ddd")
+	@NoEmpty(message="地址不能为空哦")
 	private String address;
 	
+	@Regex(value=Regexs.MAIL,message="请输入正确的邮箱")
 	private String mail;
 	
+	@Regex(value=Regexs.IDCARD,message="请输入正确的身份证")
 	private String idcard;
 	
 	

@@ -1,7 +1,10 @@
 package com.zhiweism.text.utils;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.zhiweism.text.validation.IntCheck;
 import com.zhiweism.text.validation.IntSize;
@@ -59,12 +62,7 @@ public class Validation{
                 name = name.substring(0, 1).toUpperCase() + name.substring(1); // 将属性的首字符大写，方便构造get，set方法
                 m = obj.getClass().getDeclaredMethod("get"+name);
 				m.setAccessible(true);
-				
-				//获取属性对应值
-				/*
-				 * val = (String) m.invoke(obj);
-				 * valInt =  (Integer) m.invoke(obj);
-				 */
+
 				if(str_check != null) {
 					val = (String) m.invoke(obj);
 					v = StringCheck(val, str_check.message(),str_check.value());
@@ -222,7 +220,10 @@ public class Validation{
 	
 	//正则表达式验证
 	public static ValidMsg StringRegex(String value,String message,String regex){
-		if(value.matches(regex)){
+		Pattern p = Pattern.compile(regex); 
+		Matcher m = p.matcher(value);
+		
+		if(m.matches()){
 			v.setPass(true);
 			v.setMsg("");
 		}else{

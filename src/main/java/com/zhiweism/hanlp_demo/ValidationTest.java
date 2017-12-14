@@ -10,12 +10,11 @@ public class ValidationTest {
 		user.setAddress("四川");
 		user.setAge(90);
 		user.setName("董志平");
-		user.setSex("44444");
-		user.setMail("dddddd.com");
-		user.setIdcard("5141991013311X");
+		user.setSex("男");
+		user.setMail("18383219470@163.com");
+		user.setIdcard("511024199410133117");
 		
 		ValidMsg msg = Validation.AutoVerifiy(user);
-		//ValidMsg msg = Validation.StringSize(user.getName(), "用户姓名", 2, 10);//仅演示了校验长度，其他的方法请参考Method.java内部。
 		
 		if(msg.isPass()){
 			System.out.println("验证通过");
