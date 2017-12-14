@@ -1,4 +1,4 @@
-package com.zhiweism.text.validation;
+package com.zhiweism.text.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)  
 @Retention(RetentionPolicy.RUNTIME)
-public @interface StringCheck {
+public @interface NoEmpty {
 	String message();
-	String[] value() default {};  //参数
 }

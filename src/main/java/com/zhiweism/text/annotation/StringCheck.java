@@ -1,4 +1,4 @@
-package com.zhiweism.text.validation;
+package com.zhiweism.text.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)  
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Regex {
+public @interface StringCheck {
 	String message();
-	String value() default "";//正则匹配
+	String[] value() default {};  //参数
 }

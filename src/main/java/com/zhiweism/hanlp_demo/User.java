@@ -1,11 +1,11 @@
 package com.zhiweism.hanlp_demo;
 
+import com.zhiweism.text.annotation.IntSize;
+import com.zhiweism.text.annotation.NoEmpty;
+import com.zhiweism.text.annotation.Regex;
+import com.zhiweism.text.annotation.StringCheck;
+import com.zhiweism.text.annotation.StringSize;
 import com.zhiweism.text.common.Regexs;
-import com.zhiweism.text.validation.IntSize;
-import com.zhiweism.text.validation.NoEmpty;
-import com.zhiweism.text.validation.Regex;
-import com.zhiweism.text.validation.StringCheck;
-import com.zhiweism.text.validation.StringSize;
 
 public class User {
 	

@@ -1,4 +1,4 @@
-package com.zhiweism.text.validation;
+package com.zhiweism.text.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,8 +7,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)  
 @Retention(RetentionPolicy.RUNTIME)
-public @interface StringSize {
+public @interface Regex {
 	String message();
-	int minvalue() default 0;   //最小长度
-    int maxvalue() default 0;   //最大长度
+	String value() default "";//正则匹配
 }
