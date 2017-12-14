@@ -20,7 +20,7 @@ public class ZookeeperClient implements Watcher
 	private static ZookeeperClient instance = null;
     private CuratorFramework cf = null;
     private NodeCache nc= null;
-    private static int SESSION_TIME_OUT = 2000;
+    private static int SESSION_TIME_OUT = 3000;
     
     
     public static synchronized ZookeeperClient getInstance() {
