@@ -1,29 +1,20 @@
 package com.zhiweism.hanlp_demo;
 
-import com.zhiweism.text.validation.Check;
-import com.zhiweism.text.validation.Methods;
 import com.zhiweism.text.validation.NoEmpty;
-import com.zhiweism.text.validation.Validation;
 
 public class User {
 	
-	@Check(name="用户年龄",method=Methods.IntSize,minvalue=10,maxvalue=100)
 	private Integer age;
 	
-	@Check(name="用户性别",method=Methods.StringCheck,param = {"男","女"})
 	private String sex;
 	
-	@Check(name="用户姓名",method=Methods.StringSize,maxlength = 4,minlength = 2)
 	private String name;
 	
-	@Check(name="用户地址",method=Methods.StringSize,maxlength = 10,minlength = 2)
 	@NoEmpty(message="ddd")
 	private String address;
 	
-	@Check(name="用户邮箱",method=Methods.StringType,type=Validation.MAIL_VAIL)
 	private String mail;
 	
-	@Check(name="用户身份证",method=Methods.StringRegex,regex="^\\d{17}(\\d|[A-Z])$")
 	private String idcard;
 	
 	
