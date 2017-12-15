@@ -9,7 +9,6 @@ import com.zhiweism.text.utils.ZookeeperClient;
  */
 public class App implements Runnable
 {
-	
     public static void main( String[] args )
     {
     	Thread thread = new Thread(new App());
@@ -27,7 +26,6 @@ public class App implements Runnable
 		try {
 			System.out.println("线程已经启动");
 			ZookeeperClient zookeeperClient = ZookeeperClient.getInstance();
-			
 			
 			zookeeperClient.connect("127.0.0.1:2181");
 			zookeeperClient.addNodelistener("/dong16");

@@ -10,6 +10,26 @@
 + 过滤汉字
 + 自定义过滤，可由后台自动删除添加。提供完善的API。位于FilterDao文件下。
 
+# 文本校验框架
+## Maven 
+```
+<repositories>
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+</repositories>
+```
+```
+<dependency>
+    <groupId>com.github.fanhua1994</groupId>
+    <artifactId>java_validation</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+文档如下：
+https://github.com/fanhua1994/java_validation
+
 # 如何使用
 ## 导入以下仓库
 ```
