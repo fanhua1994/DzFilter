@@ -11,14 +11,12 @@ import org.apache.curator.framework.recipes.cache.NodeCacheListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.data.Stat;
 
-public class ZookeeperClient implements Watcher
-{
+public class ZookeeperClient {
 	private static ZookeeperClient instance = null;
     private CuratorFramework cf = null;
+    private NodeCacheListener ncListener = null;
     private NodeCache nc= null;
     private static int SESSION_TIME_OUT = 3000;
     
@@ -55,23 +53,22 @@ public class ZookeeperClient implements Watcher
     }
     
     
-    public void addNodelistener(String path) throws Exception {
-    	 //监听
-    	nc = new NodeCache(cf, path, false);
-        NodeCacheListener listener = new NodeCacheListener() {
-			
-			public void nodeChanged() throws Exception {
-				// TODO Auto-generated method stub
-				System.out.println("节点发生变化");
-			}
-		};
-        nc.getListenable().addListener(listener);
-        nc.start();
-    }
+    public void addNodelistener(String path,NodeCacheListener nodeCacheListener) throws Exception {
+	   	if(ncListener  == null) {
+	   		ncListener = nodeCacheListener;
+		   	nc = new NodeCache(cf, path, false);
+		   	if(nodeCacheListener != null) {
+		   		nc.getListenable().addListener(ncListener);
+		        nc.start();
+		   	}
+	   	}
+   }
     
     public void removeNodeListener() throws IOException {
-    	if(nc != null)
+    	if(ncListener != null) {
+    		nc.getListenable().removeListener(ncListener);
     		nc.close();
+    	}
     }
 
     /**
@@ -149,9 +146,10 @@ public class ZookeeperClient implements Watcher
      * @throws IOException 
      */
     public void close() throws Exception{
-        if(cf != null)
+        if(cf != null) {
         	cf.close();
-        removeNodeListener();
+        	removeNodeListener();
+        }
     }
 
     /**
@@ -176,9 +174,4 @@ public class ZookeeperClient implements Watcher
     public void sync(String path) throws Exception{
         cf.sync().forPath(path);
     }
-
-	public void process(WatchedEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
 }

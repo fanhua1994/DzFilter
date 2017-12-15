@@ -2,6 +2,8 @@ package com.zhiweism.hanlp_demo;
 
 import java.util.Scanner;
 
+import org.apache.curator.framework.recipes.cache.NodeCacheListener;
+
 import com.zhiweism.text.utils.ZookeeperClient;
 
 /**
@@ -27,8 +29,14 @@ public class App implements Runnable
 			System.out.println("线程已经启动");
 			ZookeeperClient zookeeperClient = ZookeeperClient.getInstance();
 			
+			NodeCacheListener listener = new NodeCacheListener() {
+				public void nodeChanged() throws Exception {
+					System.out.println("检测到数据变化");
+				}
+			};
+			
 			zookeeperClient.connect("127.0.0.1:2181");
-			zookeeperClient.addNodelistener("/dong16");
+			zookeeperClient.addNodelistener("/dong16",listener);
 			zookeeperClient.createNode("/dong16", "ok");
 			zookeeperClient.close();
 			
