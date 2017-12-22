@@ -10,10 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.wltea.analyzer.lucene.IKAnalyzer;
+
+import com.zhiweism.text.utils.TextUtils;
 
 public class KeywordUtils {
 	 private final static Integer QUANTITY = 2; 
@@ -26,12 +27,16 @@ public class KeywordUtils {
 	  */
 	 private static List<String> extract(String article,Integer a) throws IOException { 
 		List<String> list =new ArrayList<String>();
-		Analyzer analyzer = new IKAnalyzer(true);  
+		IKAnalyzer analyzer = new IKAnalyzer(true);  
+		analyzer.setUseSmart(true);
         TokenStream tokenStream = analyzer.tokenStream("content", new StringReader(article));  
         CharTermAttribute term= tokenStream.addAttribute(CharTermAttribute.class);    
         tokenStream.reset();  
+        String keyword = null;
         while(tokenStream.incrementToken()){ 
-            list.add(term.toString());
+        	keyword = term.toString();
+        	if(keyword.length() > 1)
+            list.add(keyword);
         }    
 	    tokenStream.end();  
 	    tokenStream.close();  
@@ -63,7 +68,12 @@ public class KeywordUtils {
 	  * @throws IOException 
 	  */
 	 public static List<String> getKeyWords(String content,Integer quantity,Integer num) throws IOException { 
-		  List<String> keyWordsList = extract(content,quantity);//调用提取单词方法 
+		 //进行文字过滤
+		 content = TextUtils.delAllSymbol(content);
+		 content = TextUtils.delEnglishSymbol(content);
+		 content = TextUtils.delNumberChar(content);
+		 
+		 List<String> keyWordsList = extract(content,quantity);//调用提取单词方法 
 		  Map<String, Integer> map = list2Map(keyWordsList); //list转map并计次数 
 		  keyWordsList.clear();
 		  ArrayList<Entry<String, Integer>> list = new ArrayList<Entry<String,Integer>>(map.entrySet()); 
