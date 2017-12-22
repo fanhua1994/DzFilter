@@ -58,6 +58,14 @@
         <artifactId>curator-framework</artifactId>
         <version>4.0.0</version>
     </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/com.janeluo/ikanalyzer -->
+	<dependency>
+	    <groupId>com.janeluo</groupId>
+	    <artifactId>ikanalyzer</artifactId>
+	    <version>2012_u6</version>
+	</dependency>
+    
 	
   </dependencies>
 </project>
