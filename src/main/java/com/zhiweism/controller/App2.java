@@ -1,4 +1,4 @@
-package com.zhiweism.hanlp_demo;
+package com.zhiweism.controller;
 
 import java.util.Scanner;
 

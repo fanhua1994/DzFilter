@@ -1,7 +1,6 @@
 package com.zhiweism.text.database;
 
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,7 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
+
+import com.zhiweism.text.utils.PropertiesUtils;
 /**
  * Mysql SQLite数据库通用操作类。
  * @author 繁华
@@ -33,18 +33,12 @@ public class DbHelper {
 	public static synchronized DbHelper getInstance(){
 		synchronized(DbHelper.class) {
 			if(instance == null) {
-				Properties prop = new Properties();
-	     		try {
-					prop.load(DbHelper.class.getClassLoader().getResourceAsStream("java_filter_config.properties"));
-					DBURL = prop.getProperty("dbhelper.dburl");
-					DBDRIVER = prop.getProperty("dbhelper.driver");
-					DBUSER = prop.getProperty("dbhelper.dbuser");
-					DBPASS = prop.getProperty("dbhelper.dbpass");
-					ISMYSQL = Boolean.parseBoolean(prop.getProperty("dbhelper.is_mysql"));
-					instance = new DbHelper();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				DBURL = PropertiesUtils.getValue("dbhelper.dburl");
+				DBDRIVER = PropertiesUtils.getValue("dbhelper.driver");
+				DBUSER = PropertiesUtils.getValue("dbhelper.dbuser");
+				DBPASS = PropertiesUtils.getValue("dbhelper.dbpass");
+				ISMYSQL = PropertiesUtils.getBooleanValue("dbhelper.is_mysql");
+				instance = new DbHelper();
 			}
 		}
 		return instance;
