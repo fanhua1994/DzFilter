@@ -1,5 +1,6 @@
 package com.zhiweism.text.utils;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -9,6 +10,7 @@ import com.hankcs.hanlp.HanLP;
 import com.zhiweism.text.database.FilterDao;
 import com.zhiweism.text.filter.WordFilter;
 import com.zhiweism.text.keywords.ChineseToPinyin;
+import com.zhiweism.text.keywords.KeywordUtils;
 
 /**
  * 关键词辅助类
@@ -148,7 +150,9 @@ public class TextUtils {
 	 * @return
 	 */
 	public static String extractKeyword(String content,int count,boolean isPinyin,String separator) {
-		List<String> data = HanLP.extractKeyword(content, count);
+		List<String> data = extractKeyword(content,count);
+		if(data == null)
+			return null;
 		StringBuffer sb = new StringBuffer();
 		String keyword = null;
 		for(int i = 0;i<data.size();i++) {
@@ -167,24 +171,15 @@ public class TextUtils {
 	}
 	
 	public static List<String> extractKeyword(String content,int count){
-		List<String> data = HanLP.extractKeyword(content, count);
+		List<String> data = null;
+		try {
+			data = KeywordUtils.getKeyWords(content, count);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return data;
 	}
-	
-	public static String extractSummary(String content,int num,int length) {
-		StringBuffer sb = new StringBuffer();
-		String keyword = null;
-		List<String> data = HanLP.extractSummary(content, num);
-		for(int i = 0;i<data.size();i++) {
-			keyword = data.get(i);
-			if(sb.length() > length)
-				break;
-			sb.append(keyword);
-		}
-		data.clear();
-		return sb.toString();
-	}
-	
 	
 	/**
 	 * 过滤敏感词
