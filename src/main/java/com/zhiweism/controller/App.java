@@ -1,9 +1,7 @@
 package com.zhiweism.controller;
 
 import java.util.Scanner;
-
 import org.apache.curator.framework.recipes.cache.NodeCacheListener;
-
 import com.zhiweism.text.utils.ZookeeperClient;
 
 /**

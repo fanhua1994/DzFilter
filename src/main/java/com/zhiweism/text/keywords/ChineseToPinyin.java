@@ -5,6 +5,11 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
+/**
+ * 汉字转拼音
+ * @author Administrator
+ *
+ */
 public class ChineseToPinyin {  
     private static LinkedHashMap<String, Integer> spellMap = null;  
   

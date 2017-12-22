@@ -10,14 +10,8 @@ import java.util.Set;
 import com.zhiweism.text.database.DbHelper;
 
 /**
- * 创建时间：2016年8月30日 下午3:01:12
- * 
- * 思路： 创建一个FilterSet，枚举了0~65535的所有char是否是某个敏感词开头的状态
- * 
- * 判断是否是 敏感词开头 | | 是 不是 获取头节点 OK--下一个字 然后逐级遍历，DFA算法
- * 
- * @author andy
- * @version 2.2
+ * @author fanhua
+ * @version 1.0
  */
 public class WordFilter {
 	private enum FilterState{SUCCESS,ERROR};
