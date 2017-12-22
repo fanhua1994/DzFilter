@@ -3,11 +3,7 @@ package com.zhiweism.text.database;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.curator.framework.recipes.cache.NodeCacheListener;
-
 import com.zhiweism.text.filter.WordFilter;
-import com.zhiweism.text.utils.PropertiesUtils;
-import com.zhiweism.text.utils.ZookeeperClient;
 /**
  * 操作过滤库的Dao
  * @author Administrator
@@ -15,26 +11,11 @@ import com.zhiweism.text.utils.ZookeeperClient;
  */
 public class FilterDao {
 	private static FilterDao instance = null;
-	private static ZookeeperClient zookeeperClient = null;
 	
 	public static synchronized FilterDao getInstance() {
 		synchronized (FilterDao.class) {
 			if(instance == null) {
 				instance = new FilterDao();
-				zookeeperClient = ZookeeperClient.getInstance();
-				try {
-					zookeeperClient.connect(PropertiesUtils.getValue("project.zookeeper"));
-					zookeeperClient.addNodelistener("/" + PropertiesUtils.getValue("project.name"), new NodeCacheListener() {
-
-						public void nodeChanged() throws Exception {
-							WordFilter.resetInit();
-							System.out.println("收到节点变化监听事件，正在刷新过滤库");
-						}
-						
-					});
-				} catch (Exception e) {
-					System.out.println("zookeeper启动失败");
-				}
 			}
 		}
 		return instance;
