@@ -18,7 +18,7 @@ public class PropertiesUtils {
      */
     static{
         try {
-        	properties.load(PropertiesUtils.class.getClassLoader().getResourceAsStream("java_filter_config.properties"));  
+        	properties.load(PropertiesUtils.class.getClassLoader().getResourceAsStream("dz_filter_config.properties"));  
         } catch (IOException e) {  
             e.printStackTrace();   
         }  
