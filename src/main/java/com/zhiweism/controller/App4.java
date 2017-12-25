@@ -9,7 +9,7 @@ import com.zhiweism.text.keywords.KeywordUtils;
 public class App4 { 
 	 
 	 public static void main(String[] args) { 
-		 String key = "威远县隶属四川省内江市，地处内江市西北部，位于四川盆地中南部，地跨北纬29°22′～29°47′，东经104°16′～104°53′之间。东邻内江市市中区，南连自贡市大安区和贡井区，西界自贡市荣县，北衔资中县，西北与眉山市仁寿县、乐山市井研县接壤。";
+		 String key = "董志平韩国乐天集团会长辛东彬因涉嫌贪污1700亿韩元(约合人民币10.3亿元)和渎职被韩国检方提起诉讼。12月14日，韩国检方提请法院判处韩国前总统朴槿惠“亲信干政”事件核心人物崔顺实有期徒刑25年，检方同时要求法院判处涉嫌行贿的乐天集团会长辛东彬入狱4年。辛东彬曾表示自己无法逆父亲辛格浩的心意行事，所犯所有罪行都是辛格浩指示的。";
 		 List<String> data = HanLP.extractKeyword(key, 10);
 		 System.out.println("HanKp:" + data.toString());
 		 try {

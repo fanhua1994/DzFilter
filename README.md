@@ -111,15 +111,14 @@ int total = TextUtils.getDataTotal();
 以下是与HanLp对比的结果
 ```
  String key = "威远县隶属四川省内江市，地处内江市西北部，位于四川盆地中南部，地跨北纬29°22′～29°47′，东经104°16′～104°53′之间。东邻内江市市中区，南连自贡市大安区和贡井区，西界自贡市荣县，北衔资中县，西北与眉山市仁寿县、乐山市井研县接壤。";
-	 List<String> data = HanLP.extractKeyword(key, 10);
-	 System.out.println("HanKp:" + data.toString());
-	 try {
-		List<String> data2 = KeywordUtils.getKeyWords(key, 10);
-		System.out.println("IK:" + data2.toString());
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+ List<String> data = HanLP.extractKeyword(key, 10);
+ System.out.println("HanKp:" + data.toString());
+ try {
+	List<String> data2 = KeywordUtils.getKeyWords(key, 10);
+	System.out.println("IK:" + data2.toString());
+} catch (IOException e) {
+	e.printStackTrace();
+}
 ```
 输出如下：我们搜索的是威远县  HanLp并没有显示相关内容
 ```
