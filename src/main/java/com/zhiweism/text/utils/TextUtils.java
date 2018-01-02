@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.hankcs.hanlp.HanLP;
 import com.zhiweism.text.database.FilterDao;
 import com.zhiweism.text.filter.WordFilter;
 import com.zhiweism.text.keywords.ChineseToPinyin;
@@ -236,5 +235,12 @@ public class TextUtils {
 	 */
 	public static int getDataTotal() {
 		return FilterDao.getInstance().getFilterCount();
+	}
+	
+	/**
+	 * 同步关键词  适用于分布式同步
+	 */
+	public static void sync() {
+		WordFilter.resetInit();
 	}
 }

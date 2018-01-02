@@ -17,8 +17,8 @@ public class WordFilter {
 	private enum FilterState{SUCCESS,ERROR};
 	private enum KeywordType {FILTER,STOP};
 	private static FilterState FilterStatus =  FilterState.ERROR;
-	private static FilterSet set = new FilterSet(); // 存储首字
-	private static Map<Integer, WordNode> nodes = new HashMap<Integer, WordNode>(2048, 1); // 存储节点
+	private static List<Integer> set = new ArrayList<Integer>(); // 存储首字
+	private static Map<Integer, WordNode> nodes = new HashMap<Integer, WordNode>(); // 存储节点
 	private static Set<Integer> stopwdSet = new HashSet<Integer>(); // 停顿词
 	private static char SIGN = '*'; // 敏感词过滤替换
 
@@ -43,6 +43,8 @@ public class WordFilter {
 	 * @param fs
 	 */
 	public static void resetInit() {
+		set.clear();
+		nodes.clear();
 		addSensitiveWord(readWordFromFile(KeywordType.FILTER));
 		System.out.println("敏感词数量:" + nodes.size());
 	}
@@ -99,6 +101,7 @@ public class WordFilter {
 				if(chs.length  == 0)
 					continue;
 				fchar = charConvert(chs[0]);
+				System.out.println(fchar);
 				if (!set.contains(fchar)) {// 没有首字定义
 					set.add(fchar);// 首字标志位 可重复add,反正判断了，不重复了
 					fnode = new WordNode(fchar, chs.length == 1);

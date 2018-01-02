@@ -1,5 +1,5 @@
 # JavaFilter
-使用DFA算法实现的敏感词过滤。主要用于实现数据文本的内容安全,反垃圾,智能鉴黄,敏感词过滤,不良信息检测，携带文本的关键词获取，自动摘要。
+使用DFA算法实现的敏感词过滤。主要用于实现数据文本的内容安全,反垃圾,智能鉴黄,敏感词过滤,不良信息检测，携带文本的关键词获取。
 + 过滤SQL脚本
 + 过滤中文字符
 + 过滤英文字符
@@ -44,7 +44,7 @@ https://github.com/fanhua1994/java_validation
 ```
 <dependency>
     <groupId>com.github.fanhua1994</groupId>
-    <artifactId>JavaFilter</artifactId>
+    <artifactId>DzFilter</artifactId>
     <version>1.0.5</version>
 </dependency>
 ```

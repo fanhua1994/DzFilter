@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.zhiweism</groupId>
-  <artifactId>hanlp_demo</artifactId>
+  <artifactId>DzFilter</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -23,41 +23,10 @@
 	</dependency>
 	    
 	<dependency>
-	    <groupId>com.hankcs</groupId>
-	    <artifactId>hanlp</artifactId>
-	    <version>portable-1.5.2</version>
-	</dependency>
-
-	<dependency>
 		<groupId>org.xerial</groupId>
 		<artifactId>sqlite-jdbc</artifactId>
 		<version>3.7.2</version>
 	</dependency> 
-	
-	<dependency>
-	    <groupId>org.apache.zookeeper</groupId>
-	    <artifactId>zookeeper</artifactId>
-	    <version>3.4.11</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.apache.curator</groupId>
-	    <artifactId>curator-recipes</artifactId>
-	    <version>4.0.0</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.apache.curator</groupId>
-	    <artifactId>curator-client</artifactId>
-	    <version>4.0.0</version>
-	</dependency>
-	
-	 <!-- curator框架 -->
-    <dependency>
-        <groupId>org.apache.curator</groupId>
-        <artifactId>curator-framework</artifactId>
-        <version>4.0.0</version>
-    </dependency>
     
     <!-- https://mvnrepository.com/artifact/com.janeluo/ikanalyzer -->
 	<dependency>
@@ -65,6 +34,14 @@
 	    <artifactId>ikanalyzer</artifactId>
 	    <version>2012_u6</version>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-all -->
+	<dependency>
+	    <groupId>org.apache.activemq</groupId>
+	    <artifactId>activemq-all</artifactId>
+	    <version>5.15.2</version>
+	</dependency>
+	
     
 	
   </dependencies>

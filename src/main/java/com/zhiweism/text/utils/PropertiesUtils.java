@@ -13,7 +13,7 @@ import java.util.Properties;
 public class PropertiesUtils {
 	private static Properties properties = new Properties();  
 	  
-    /** 
+    /**
      * 读取properties配置文件信息 
      */
     static{
