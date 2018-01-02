@@ -1,4 +1,4 @@
-package com.zhiweism.text.filter;
+package com.hengyi.dzfilter.wordfilter;
 
 
 import java.util.LinkedList;

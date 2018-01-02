@@ -1,4 +1,4 @@
-package com.zhiweism.text.utils;
+package com.hengyi.dzfilter.utils;
 
 import java.io.IOException;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.zhiweism.text.database.FilterDao;
-import com.zhiweism.text.filter.WordFilter;
-import com.zhiweism.text.keywords.ChineseToPinyin;
-import com.zhiweism.text.keywords.KeywordUtils;
+import com.hengyi.dzfilter.database.FilterDao;
+import com.hengyi.dzfilter.keywords.ChineseToPinyin;
+import com.hengyi.dzfilter.keywords.KeywordUtils;
+import com.hengyi.dzfilter.wordfilter.WordFilter;
 
 /**
  * 关键词辅助类

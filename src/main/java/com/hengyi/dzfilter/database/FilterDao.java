@@ -1,9 +1,9 @@
-package com.zhiweism.text.database;
+package com.hengyi.dzfilter.database;
 
 import java.util.List;
 import java.util.Map;
 
-import com.zhiweism.text.filter.WordFilter;
+import com.hengyi.dzfilter.wordfilter.WordFilter;
 /**
  * 操作过滤库的Dao
  * @author Administrator

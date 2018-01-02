@@ -1,4 +1,4 @@
-package com.zhiweism.text.utils;
+package com.hengyi.dzfilter.utils;
 
 import java.io.IOException;
 import java.util.Properties;

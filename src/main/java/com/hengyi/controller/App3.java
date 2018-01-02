@@ -1,9 +1,9 @@
-package com.zhiweism.controller;
+package com.hengyi.controller;
 
 import java.util.Scanner;
 
-import com.zhiweism.text.filter.WordFilter;
-import com.zhiweism.text.utils.TextUtils;
+import com.hengyi.dzfilter.utils.TextUtils;
+import com.hengyi.dzfilter.wordfilter.WordFilter;
 
 public class App3 {
 	

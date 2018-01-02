@@ -1,4 +1,4 @@
-package com.zhiweism.controller;
+package com.hengyi.controller;
 
 /**
  * Hello world!

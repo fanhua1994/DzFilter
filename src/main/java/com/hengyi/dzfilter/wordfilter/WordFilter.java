@@ -1,4 +1,4 @@
-package com.zhiweism.text.filter;
+package com.hengyi.dzfilter.wordfilter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.zhiweism.text.database.DbHelper;
+import com.hengyi.dzfilter.database.DbHelper;
 
 /**
  * @author fanhua

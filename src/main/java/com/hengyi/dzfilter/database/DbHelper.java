@@ -1,4 +1,4 @@
-package com.zhiweism.text.database;
+package com.hengyi.dzfilter.database;
 
 
 import java.sql.Connection;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.zhiweism.text.utils.PropertiesUtils;
+import com.hengyi.dzfilter.utils.PropertiesUtils;
 /**
  * Mysql SQLite数据库通用操作类。
  * @author 繁华
