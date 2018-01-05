@@ -247,7 +247,7 @@ public class DbHelper {
 	 * @return
 	 */
 	public boolean existSqliteTable(String table) {
-		int res = fieldInt("select count(*)  from sqlite_master where type='table' and name = '%s'", table);
+		int res = fieldInt("select count(*) from sqlite_master where type='table' and name = '%s'", table);
 		return res == 1;
 	}
 }
