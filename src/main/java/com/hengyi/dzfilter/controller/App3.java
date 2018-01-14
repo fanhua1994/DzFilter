@@ -1,4 +1,4 @@
-package com.hengyi.controller;
+package com.hengyi.dzfilter.controller;
 
 import java.util.Scanner;
 

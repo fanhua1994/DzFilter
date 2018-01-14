@@ -33,7 +33,7 @@ public class DbHelper {
 	public static synchronized DbHelper getInstance(){
 		synchronized(DbHelper.class) {
 			if(instance == null) {
-				DBURL = PropertiesUtils.getValue("dbhelper.dburl");
+				DBURL = PropertiesUtils.getValue("dzfilter.db.dburl");
 				DBDRIVER = PropertiesUtils.getValue("dbhelper.driver");
 				DBUSER = PropertiesUtils.getValue("dbhelper.dbuser");
 				DBPASS = PropertiesUtils.getValue("dbhelper.dbpass");
