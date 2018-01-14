@@ -34,7 +34,6 @@ public class KeywordUtils {
         String keyword = null;
         while(tokenStream.incrementToken()){ 
         	keyword = term.toString();
-        	System.out.println("关键词：" + keyword);
         	if(keyword.length() > 1)
             list.add(keyword);
         }    

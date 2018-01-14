@@ -34,10 +34,10 @@ public class DbHelper {
 		synchronized(DbHelper.class) {
 			if(instance == null) {
 				DBURL = PropertiesUtils.getValue("dzfilter.db.dburl");
-				DBDRIVER = PropertiesUtils.getValue("dbhelper.driver");
-				DBUSER = PropertiesUtils.getValue("dbhelper.dbuser");
-				DBPASS = PropertiesUtils.getValue("dbhelper.dbpass");
-				ISMYSQL = PropertiesUtils.getBooleanValue("dbhelper.is_mysql");
+				DBDRIVER = PropertiesUtils.getValue("dzfilter.db.driver");
+				DBUSER = PropertiesUtils.getValue("dzfilter.db.dbuser");
+				DBPASS = PropertiesUtils.getValue("dzfilter.db.dbpass");
+				ISMYSQL = PropertiesUtils.getBooleanValue("dzfilter.db.is_mysq");
 				instance = new DbHelper();
 			}
 		}
