@@ -5,9 +5,12 @@ import javax.jms.ConnectionFactory;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.MessageProducer;
+import javax.jms.ObjectMessage;
 import javax.jms.Session;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+
+import com.hengyi.dzfilter.model.MqMessage;
 
 public class ActivemqUtils {
 	
@@ -21,16 +24,16 @@ public class ActivemqUtils {
 		ProjectName = PropertiesUtils.getValue("dzfilter.cluster.project_name");
 		connectionFactory = new ActiveMQConnectionFactory(activemq_user,activemq_pass, activemq_url);
 	}
-	
+
 	
 	/**
 	 * 发送普通消息
 	 */
-	public static boolean SendTextMessage(String text) {
+	public static boolean SendObjectMessage(MqMessage mMqMessage) {
 		Connection connection = null; 
         Session session = null; 
         Destination destination = null; 
-        MessageProducer producer = null;  
+        MessageProducer producer = null; 
         try {
             connection = connectionFactory.createConnection();
             connection.start();
@@ -38,8 +41,8 @@ public class ActivemqUtils {
             destination = session.createTopic(ProjectName);
             producer = session.createProducer(destination);
             producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
-            // 构造消息，此处写死，项目就是参数，或者方法获取
-            session.createTextMessage(text);
+            ObjectMessage message = session.createObjectMessage(mMqMessage);
+            producer.send(message);
             session.commit();
             return true;
         } catch (Exception e) {
@@ -53,6 +56,14 @@ public class ActivemqUtils {
             } catch (Throwable ignore) {
             }
         }
+	}
+	
+	public static boolean SendObjectMessage(int id,String host,String message) {
+		MqMessage mqMessage = new MqMessage();
+		mqMessage.setId(id);
+		mqMessage.setHost(host);
+		mqMessage.setMessage(message);
+		return SendObjectMessage(mqMessage);
 	}
 
 }

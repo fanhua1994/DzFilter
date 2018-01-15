@@ -14,7 +14,6 @@ public class App4 {
 			List<String> data2 = KeywordUtils.getKeyWords(key, 20);
 			System.out.println("IK:" + data2.toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	 } 

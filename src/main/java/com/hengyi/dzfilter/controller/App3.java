@@ -15,6 +15,7 @@ public class App3 {
 		System.out.println(s);
 		Scanner sc = new Scanner(System.in);
 		sc.nextLine();
+		
 		WordFilter.resetInit();
 		s = TextUtils.filter("你好董志平,欢迎您");
 		System.out.println(s);

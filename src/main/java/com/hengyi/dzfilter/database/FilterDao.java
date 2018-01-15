@@ -3,6 +3,8 @@ package com.hengyi.dzfilter.database;
 import java.util.List;
 import java.util.Map;
 
+import com.hengyi.dzfilter.utils.ActivemqUtils;
+import com.hengyi.dzfilter.utils.PropertiesUtils;
 import com.hengyi.dzfilter.wordfilter.WordFilter;
 /**
  * 操作过滤库的Dao
@@ -29,7 +31,6 @@ public class FilterDao {
 	 */
 	public boolean addFilter(String keywords) {
 		boolean isok = DbHelper.getInstance().executeUpdate("insert into filter_wd(keywords)values('%s')", keywords);
-		WordFilter.resetInit();
 		return isok;
 	}
 
@@ -40,7 +41,6 @@ public class FilterDao {
 	 */
 	public boolean delFilter(String keywords) {
 		boolean isok = DbHelper.getInstance().executeUpdate("delete from filter_wd where keywords='%s'", keywords);
-		WordFilter.resetInit();
 		return isok;
 	}
 	

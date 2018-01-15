@@ -195,7 +195,14 @@ public class TextUtils {
 	 * @return
 	 */
 	public static boolean addFilter(String keywords) {
-		return FilterDao.getInstance().addFilter(keywords);
+		boolean res =  FilterDao.getInstance().addFilter(keywords);
+		if(res) {
+			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open")) {
+				ActivemqUtils.SendObjectMessage(1,PropertiesUtils.getValue("dzfilter.cluster.host"),"resetInit");
+			}
+		}
+		sync();
+		return res;
 	}
 	
 	
@@ -205,7 +212,14 @@ public class TextUtils {
 	 * @return
 	 */
 	public static boolean delFilter(String keywords) {
-		return FilterDao.getInstance().delFilter(keywords);
+		boolean res =  FilterDao.getInstance().delFilter(keywords);
+		if(res) {
+			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open")) {
+				ActivemqUtils.SendObjectMessage(1,PropertiesUtils.getValue("dzfilter.cluster.host"),"resetInit");
+			}
+		}
+		sync();
+		return res;
 	}
 	
 	/**
