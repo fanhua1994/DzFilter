@@ -11,6 +11,7 @@ import com.hengyi.dzfilter.utils.TextUtils;
 public class SyncMessageListener implements MessageListener{
 
 	public void onMessage(Message message) {
+		System.out.println("收到Sync消息");
 		try {
 			ObjectMessage objectMessage = (ObjectMessage) message;
 			MqMessage mqMessage = (MqMessage) objectMessage.getObject();

@@ -3,7 +3,6 @@ package com.hengyi.dzfilter.controller;
 import java.util.Scanner;
 
 import com.hengyi.dzfilter.utils.TextUtils;
-import com.hengyi.dzfilter.wordfilter.WordFilter;
 
 public class App3 {
 	
@@ -13,12 +12,11 @@ public class App3 {
 		 */
 		String s = TextUtils.filter("你好董志平,欢迎您");
 		System.out.println(s);
+		
+		TextUtils.addFilter("哈哈哈哈");
 		Scanner sc = new Scanner(System.in);
 		sc.nextLine();
 		
-		WordFilter.resetInit();
-		s = TextUtils.filter("你好董志平,欢迎您");
-		System.out.println(s);
 	}
 
 }

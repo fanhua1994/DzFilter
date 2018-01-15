@@ -101,7 +101,6 @@ public class WordFilter {
 				if(chs.length  == 0)
 					continue;
 				fchar = charConvert(chs[0]);
-				System.out.println(fchar);
 				if (!set.contains(fchar)) {// 没有首字定义
 					set.add(fchar);// 首字标志位 可重复add,反正判断了，不重复了
 					fnode = new WordNode(fchar, chs.length == 1);

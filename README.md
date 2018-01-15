@@ -29,7 +29,7 @@
 <dependency>
     <groupId>com.github.fanhua1994</groupId>
     <artifactId>DzFilter</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 </dependency>
 ```
 
@@ -44,7 +44,7 @@
 ```
 
 ## 配置数据库
-> 如果```DzFilter```您需要使用在分布式的系统或同时在多个程序中使用```DzFilter```并且需要保持一致性，那么我们建议您使用mysql数据库，如果是单击应用我们建议您使用sqlite数据库。数据库文件在项目目录下的database下。放到对应目录  配置好就行了。如果想使用mysql的话，请自行导入mysql驱动，并将database目录下的java_filter.sql导入mysql然后在dz_filter_config.properties配置 用户名密码等信息即可。
+> 如果```DzFilter```您需要使用在分布式的系统或同时在多个程序中使用```DzFilter```并且需要保持一致性，那么我们建议您使用mysql数据库，如果是单击应用我们建议您使用sqlite数据库。数据库文件在项目目录下的database下。放到对应目录  配置好就行了。如果想使用mysql的话，请自行导入mysql驱动，并将database目录下的java_filter.sql导入mysql然后在dzfilter_config.properties配置 用户名密码等信息即可。
 ```
 <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 <dependency>
@@ -55,19 +55,37 @@
 ```
 Mysql配置文件如下
 ```
-dbhelper.driver=com.mysql.jdbc.Driver
-dbhelper.dburl=jdbc:mysql://120.77.245.101:3306/filter_word?useUnicode\=true&characterEncoding\=utf-8&autoReconnect\=true
-dbhelper.dbuser=root
-dbhelper.dbpass=****
-dbhelper.is_mysql=true
+dzfilter.db.driver=org.sqlite.JDBC
+dzfilter.db.dburl=jdbc:mysql://120.77.245.101:3306/filter_word?useUnicode\=true&characterEncoding\=utf-8&autoReconnect\=true
+dzfilter.db.is_mysql=true
+#if database is mysql please input user and pass
+dzfilter.db.dbuser=root
+dzfilter.db.dbpass=*****
+
+# 如果不是集群 请忽略以下配置
+dzfilter.cluster.open=true
+dzfilter.cluster.activemq=tcp://192.168.0.106:61616
+dzfilter.cluster.host=192.168.0.105
+dzfilter.cluster.project_name=dzfilter
+dzfilter.cluster.username=admin
+dzfilter.cluster.password=admin
 ```
-SQLite配置文件如下
+SQLite配置如下
 ```
-dbhelper.driver=org.sqlite.JDBC
-dbhelper.dburl=jdbc:sqlite:F:\\data_filter20171211.db
-dbhelper.dbuser=
-dbhelper.dbpass=
-dbhelper.is_mysql=false
+dzfilter.db.driver=org.sqlite.JDBC
+dzfilter.db.dburl=jdbc:sqlite:/home/fanhua/database/data_filter20171211.db
+dzfilter.db.is_mysql=false
+#if database is mysql please input user and pass
+dzfilter.db.dbuser=root
+dzfilter.db.dbpass=***
+
+# cluster config  only is_mysql param is true
+dzfilter.cluster.open=true
+dzfilter.cluster.activemq=tcp://192.168.0.106:61616
+dzfilter.cluster.host=192.168.0.105
+dzfilter.cluster.project_name=dzfilter
+dzfilter.cluster.username=admin
+dzfilter.cluster.password=admin
 ```
 
 ## 如何自定义过滤服务

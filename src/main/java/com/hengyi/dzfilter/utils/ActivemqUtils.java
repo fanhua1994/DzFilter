@@ -46,10 +46,12 @@ public class ActivemqUtils {
             session.commit();
             return true;
         } catch (Exception e) {
+        	e.printStackTrace();
            return false;
         } finally {
             try {
                 if (null != connection) {
+                	producer.close();
                 	session.close();
                     connection.close();
                 }
