@@ -79,8 +79,8 @@ dzfilter.db.is_mysql=false
 dzfilter.db.dbuser=root
 dzfilter.db.dbpass=***
 
-# cluster config  only is_mysql param is true
-dzfilter.cluster.open=true
+# 目前在SQLite数据库上暂时不支持集群模式
+dzfilter.cluster.open=false
 dzfilter.cluster.activemq=tcp://192.168.0.106:61616
 dzfilter.cluster.host=192.168.0.105
 dzfilter.cluster.project_name=dzfilter
