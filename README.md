@@ -1,5 +1,5 @@
-# 整改
-> 最近在对DzFilter支持分布式功能上进行整改。。。。
+# 公告
+> 最近在对DzFilter支持分布式功能上进行整改，目前1.0.6版本已经发布，暂时只支持在Mysql数据库上才支持集群模式，1.0.7版本中我将会进行修复，支持SQLite数据库。
 
 # DzFilter
 使用DFA算法实现的敏感词过滤。主要用于实现数据文本的内容安全,反垃圾,智能鉴黄,敏感词过滤,不良信息检测，携带文本的关键词获取。
@@ -87,6 +87,10 @@ dzfilter.cluster.project_name=dzfilter
 dzfilter.cluster.username=admin
 dzfilter.cluster.password=admin
 ```
+
+# 集群配置
+如果您想要在多个项目中使用DzFilter请先安装activemq消息队列，在配置文件中进行配置，每个项目最好不要放到一台服务区，`dzfilter.cluster.host`参数对数据至关重要，请保证全局唯一。
+您只需要在多个项目中同时使用Activemq消费者监听`com.hengyi.dzfilter.listener.SyncMessageListener`即可。
 
 ## 如何自定义过滤服务
 
