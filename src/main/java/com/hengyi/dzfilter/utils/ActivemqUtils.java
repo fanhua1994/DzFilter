@@ -15,13 +15,13 @@ import com.hengyi.dzfilter.model.MqMessage;
 public class ActivemqUtils {
 	
 	private static ConnectionFactory connectionFactory; 
-	private static String ProjectName = null;
+	private static String ChannelName = null;
 	
 	static {
 		String activemq_user = PropertiesUtils.getValue("dzfilter.cluster.username");
 		String activemq_pass = PropertiesUtils.getValue("dzfilter.cluster.password");
 		String activemq_url = PropertiesUtils.getValue("dzfilter.cluster.activemq");
-		ProjectName = PropertiesUtils.getValue("dzfilter.cluster.project_name");
+		ChannelName = PropertiesUtils.getValue("dzfilter.cluster.channel_name");
 		connectionFactory = new ActiveMQConnectionFactory(activemq_user,activemq_pass, activemq_url);
 	}
 
@@ -38,7 +38,7 @@ public class ActivemqUtils {
             connection = connectionFactory.createConnection();
             connection.start();
             session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
-            destination = session.createTopic(ProjectName);
+            destination = session.createTopic(ChannelName);
             producer = session.createProducer(destination);
             producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
             ObjectMessage message = session.createObjectMessage(mMqMessage);

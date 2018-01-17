@@ -65,8 +65,8 @@ dzfilter.db.dbpass=*****
 # 如果不是集群 请忽略以下配置
 dzfilter.cluster.open=true
 dzfilter.cluster.activemq=tcp://192.168.0.106:61616
-dzfilter.cluster.host=192.168.0.105
-dzfilter.cluster.project_name=dzfilter
+dzfilter.cluster.server_id=192.168.0.105
+dzfilter.cluster.channel_name=dzfilter
 dzfilter.cluster.username=admin
 dzfilter.cluster.password=admin
 ```
@@ -82,15 +82,15 @@ dzfilter.db.dbpass=***
 # 目前在SQLite数据库上暂时不支持集群模式
 dzfilter.cluster.open=false
 dzfilter.cluster.activemq=tcp://192.168.0.106:61616
-dzfilter.cluster.host=192.168.0.105
-dzfilter.cluster.project_name=dzfilter
+dzfilter.cluster.server_id=192.168.0.105
+dzfilter.cluster.channel_name=dzfilter
 dzfilter.cluster.username=admin
 dzfilter.cluster.password=admin
 ```
 
 # 集群配置
-如果您想要在多个项目中使用DzFilter请先安装activemq消息队列，在配置文件中进行配置，每个项目最好不要放到一台服务区，`dzfilter.cluster.host`参数对数据至关重要，请保证全局唯一。`dzfilter.cluster.open`请保证为true开启状态，
-多个项目之间需要保证`dzfilter.cluster.project_name`参数一致。
+如果您想要在多个项目中使用DzFilter请先安装activemq消息队列，在配置文件中进行配置，每个项目最好不要放到一台服务区，`dzfilter.cluster.server_id`参数对数据至关重要，请保证全局唯一。`dzfilter.cluster.open`请保证为true开启状态，
+多个项目之间需要保证`dzfilter.cluster.channel_name`参数一致。
 您只需要在多个项目中同时使用Activemq消费者监听`com.hengyi.dzfilter.listener.SyncMessageListener`即可。
 
 ## 如何自定义过滤服务

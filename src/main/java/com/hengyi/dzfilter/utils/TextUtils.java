@@ -198,7 +198,7 @@ public class TextUtils {
 		boolean res =  FilterDao.getInstance().addFilter(keywords);
 		if(res) {
 			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open")) {
-				boolean isok = ActivemqUtils.SendObjectMessage(1,PropertiesUtils.getValue("dzfilter.cluster.host"),"resetInit");
+				boolean isok = ActivemqUtils.SendObjectMessage(1,PropertiesUtils.getValue("dzfilter.cluster.server_id"),"resetInit");
 				System.out.println("addFilter发送状态" + isok);
 			}
 		}
@@ -216,7 +216,7 @@ public class TextUtils {
 		boolean res =  FilterDao.getInstance().delFilter(keywords);
 		if(res) {
 			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open")) {
-				ActivemqUtils.SendObjectMessage(1,PropertiesUtils.getValue("dzfilter.cluster.host"),"resetInit");
+				ActivemqUtils.SendObjectMessage(1,PropertiesUtils.getValue("dzfilter.cluster.server_id"),"resetInit");
 			}
 		}
 		sync();

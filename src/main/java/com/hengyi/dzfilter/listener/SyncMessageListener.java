@@ -15,7 +15,7 @@ public class SyncMessageListener implements MessageListener{
 		try {
 			ObjectMessage objectMessage = (ObjectMessage) message;
 			MqMessage mqMessage = (MqMessage) objectMessage.getObject();
-			if(!mqMessage.getHost().equals(PropertiesUtils.getValue("dzfilter.cluster.host")))
+			if(!mqMessage.getHost().equals(PropertiesUtils.getValue("dzfilter.cluster.server_id")))
 				TextUtils.sync();
 		}catch(Exception e) {
 			e.printStackTrace();
