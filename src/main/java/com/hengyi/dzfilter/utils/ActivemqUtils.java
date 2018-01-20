@@ -60,10 +60,10 @@ public class ActivemqUtils {
         }
 	}
 	
-	public static boolean SendObjectMessage(int id,String host,String message) {
+	public static boolean SendObjectMessage(int id,String server_id,String message) {
 		MqMessage mqMessage = new MqMessage();
 		mqMessage.setId(id);
-		mqMessage.setHost(host);
+		mqMessage.setServer_id(server_id);
 		mqMessage.setMessage(message);
 		return SendObjectMessage(mqMessage);
 	}

@@ -1,5 +1,5 @@
 # 公告
-> 最近在对DzFilter支持分布式功能上进行整改，目前1.0.6版本已经发布，暂时只支持在Mysql数据库上才支持集群模式，1.0.7版本中我将会进行修复，支持SQLite数据库。
+> 最近在对DzFilter支持分布式功能上进行整改，目前1.0.6版本已经发布，暂时只支持在Mysql数据库上才支持集群模式，1.0.7版本中我将会进行修复，支持SQLite数据库。目前1.0.7版本正在更新中，使用的使用数据库请导入最新的20180120后缀的数据库。目前正在调试。
 
 # DzFilter
 使用DFA算法实现的敏感词过滤。主要用于实现数据文本的内容安全,反垃圾,智能鉴黄,敏感词过滤,不良信息检测，携带文本的关键词获取。
@@ -33,20 +33,20 @@
 </dependency>
 ```
 
-## TextUtils使用请看源码
+## 功能详解
+### 过滤敏感词
+```
+String filter(String content)
+```
+### 判断是否包含敏感词
+```
+boolean existFilter(String content)
+```
 
-## 过滤日志
-> 过滤库仅仅加载一次，会全部加载到内存，所以要注意不能大于5000个。
-```
-加载时间 : 229233221ns
-加载时间 : 229ms
-我是***，我为自己代言
-```
 
 ## 配置数据库
 > 如果```DzFilter```您需要使用在分布式的系统或同时在多个程序中使用```DzFilter```并且需要保持一致性，那么我们建议您使用mysql数据库，如果是单击应用我们建议您使用sqlite数据库。数据库文件在项目目录下的database下。放到对应目录  配置好就行了。如果想使用mysql的话，请自行导入mysql驱动，并将database目录下的java_filter.sql导入mysql然后在dzfilter_config.properties配置 用户名密码等信息即可。
 ```
-<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
@@ -58,7 +58,7 @@ Mysql配置文件如下
 dzfilter.db.driver=org.sqlite.JDBC
 dzfilter.db.dburl=jdbc:mysql://120.77.245.101:3306/filter_word?useUnicode\=true&characterEncoding\=utf-8&autoReconnect\=true
 dzfilter.db.is_mysql=true
-#if database is mysql please input user and pass
+#如何您是使用mysql请配置以下信息
 dzfilter.db.dbuser=root
 dzfilter.db.dbpass=*****
 
@@ -75,7 +75,7 @@ SQLite配置如下
 dzfilter.db.driver=org.sqlite.JDBC
 dzfilter.db.dburl=jdbc:sqlite:/home/fanhua/database/data_filter20171211.db
 dzfilter.db.is_mysql=false
-#if database is mysql please input user and pass
+#不是Mysql不用填写
 dzfilter.db.dbuser=root
 dzfilter.db.dbpass=***
 
@@ -88,7 +88,7 @@ dzfilter.cluster.username=admin
 dzfilter.cluster.password=admin
 ```
 
-# 集群配置
+## 集群配置
 如果您想要在多个项目中使用DzFilter请先安装activemq消息队列，在配置文件中进行配置，每个项目最好不要放到一台服务区，`dzfilter.cluster.server_id`参数对数据至关重要，请保证全局唯一。`dzfilter.cluster.open`请保证为true开启状态，
 多个项目之间需要保证`dzfilter.cluster.channel_name`参数一致。
 您只需要在多个项目中同时使用Activemq消费者监听`com.hengyi.dzfilter.listener.SyncMessageListener`即可。

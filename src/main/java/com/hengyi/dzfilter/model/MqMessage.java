@@ -5,10 +5,12 @@ import java.io.Serializable;
 public class MqMessage implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	
+
 	private int id;
-	private String host;
+	private String server_id;
 	private String message;
+	private int cmd;
+	
 	
 	public int getId() {
 		return id;
@@ -16,11 +18,11 @@ public class MqMessage implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getHost() {
-		return host;
+	public String getServer_id() {
+		return server_id;
 	}
-	public void setHost(String host) {
-		this.host = host;
+	public void setServer_id(String server_id) {
+		this.server_id = server_id;
 	}
 	public String getMessage() {
 		return message;
@@ -28,8 +30,10 @@ public class MqMessage implements Serializable{
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-	
-	
-
+	public int getCmd() {
+		return cmd;
+	}
+	public void setCmd(int cmd) {
+		this.cmd = cmd;
+	}
 }

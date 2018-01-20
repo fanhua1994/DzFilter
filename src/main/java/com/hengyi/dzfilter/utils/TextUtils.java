@@ -189,6 +189,11 @@ public class TextUtils {
 		return WordFilter.doFilter(content);
 	}
 	
+	public static boolean existFilter(String content) {
+		boolean res = WordFilter.isContains(content);
+		return res;
+	}
+	
 	/**
 	 * 添加敏感词
 	 * @param keywords
@@ -198,8 +203,8 @@ public class TextUtils {
 		boolean res =  FilterDao.getInstance().addFilter(keywords);
 		if(res) {
 			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open")) {
-				boolean isok = ActivemqUtils.SendObjectMessage(1,PropertiesUtils.getValue("dzfilter.cluster.server_id"),"resetInit");
-				System.out.println("addFilter发送状态" + isok);
+				ActivemqUtils.SendObjectMessage(1,PropertiesUtils.getValue("dzfilter.cluster.server_id"),"resetInit");
+				//System.out.println("addFilter发送状态" + isok);
 			}
 		}
 		sync();
