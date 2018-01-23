@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 /**
  * 操作过滤库的Dao
- * @author Administrator
+ * @author Fanhua
  *
  */
 public class FilterDao {
