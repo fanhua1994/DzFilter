@@ -33,6 +33,15 @@ public class FilterDao {
 		boolean isok = DbHelper.getInstance().executeUpdate("insert into filter_wd(keywords)values('%s')", keywords);
 		return isok;
 	}
+	
+	/**
+	 * 添加关键词 返回影响行数
+	 * @param keywords
+	 * @return
+	 */
+	public int addFilter2(String keywords) {
+		return DbHelper.getInstance().executeUpdate2("insert into filter_wd(keywords)values('%s')", keywords);
+	}
 
 	/**
 	 * 删除关键词
@@ -42,6 +51,10 @@ public class FilterDao {
 	public boolean delFilter(String keywords) {
 		boolean isok = DbHelper.getInstance().executeUpdate("delete from filter_wd where keywords='%s'", keywords);
 		return isok;
+	}
+	
+	public int delFilter2(String keywords) {
+		return DbHelper.getInstance().executeUpdate2("delete from filter_wd where keywords='%s'", keywords);
 	}
 	
 	/**

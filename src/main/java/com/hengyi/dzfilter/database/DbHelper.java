@@ -89,11 +89,35 @@ public class DbHelper {
 			stmt.executeUpdate(String.format(sql, args));
 			stmt.close();
 			conn.close();
-			
 			return true;
 		}catch(Exception e){
 			e.printStackTrace();
 			return false;
+		}
+	}
+	
+	/**
+	 * 执行一次更新 返回受影响行数
+	 * @param sql
+	 * @param args
+	 * @return
+	 */
+	public int executeUpdate2(String sql,Object... args){
+		Connection conn = connection();
+		int res = 0;
+		if(conn == null){
+			return res;
+		}
+		Statement stmt = null;
+		try{
+			stmt = conn.createStatement();
+			res = stmt.executeUpdate(String.format(sql, args));
+			stmt.close();
+			conn.close();
+			return res;
+		}catch(Exception e){
+			e.printStackTrace();
+			return res;
 		}
 	}
 	

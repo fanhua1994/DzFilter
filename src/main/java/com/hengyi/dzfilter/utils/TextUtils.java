@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.hengyi.dzfilter.config.Config;
 import com.hengyi.dzfilter.database.FilterDao;
 import com.hengyi.dzfilter.keywords.ChineseToPinyin;
 import com.hengyi.dzfilter.keywords.KeywordUtils;
@@ -199,16 +200,15 @@ public class TextUtils {
 	 * @param keywords
 	 * @return
 	 */
-	public static boolean addFilter(String keywords) {
-		boolean res =  FilterDao.getInstance().addFilter(keywords);
-		if(res) {
+	public static int addFilter(String keywords) {
+		int result_id =  FilterDao.getInstance().addFilter2(keywords);
+		if(result_id > 0) {
 			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open")) {
-				ActivemqUtils.SendObjectMessage(1,PropertiesUtils.getValue("dzfilter.cluster.server_id"),"resetInit");
-				//System.out.println("addFilter发送状态" + isok);
+				ActivemqUtils.SendObjectMessage(result_id,Config.CMD_ADD,PropertiesUtils.getValue("dzfilter.cluster.server_id"),keywords);
 			}
 		}
 		sync();
-		return res;
+		return result_id;
 	}
 	
 	
@@ -217,15 +217,15 @@ public class TextUtils {
 	 * @param keywords
 	 * @return
 	 */
-	public static boolean delFilter(String keywords) {
-		boolean res =  FilterDao.getInstance().delFilter(keywords);
-		if(res) {
+	public static int delFilter(String keywords) {
+		int result_id =  FilterDao.getInstance().delFilter2(keywords);
+		if(result_id  > 0) {
 			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open")) {
-				ActivemqUtils.SendObjectMessage(1,PropertiesUtils.getValue("dzfilter.cluster.server_id"),"resetInit");
+				ActivemqUtils.SendObjectMessage(result_id,Config.CMD_DELETE,PropertiesUtils.getValue("dzfilter.cluster.server_id"),keywords);
 			}
 		}
 		sync();
-		return res;
+		return result_id;
 	}
 	
 	/**

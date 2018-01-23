@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.hengyi.dzfilter.database.DbHelper;
+import com.hengyi.dzfilter.utils.StopWordUtils;
 
 /**
  * @author fanhua
@@ -31,7 +32,7 @@ public class WordFilter {
 		if(FilterStatus == FilterState.ERROR) {
 			long time1 = System.currentTimeMillis();
 			addSensitiveWord(readWordFromFile(KeywordType.FILTER));
-			addStopWord(readWordFromFile(KeywordType.STOP));
+			addStopWord(StopWordUtils.getStopWord());
 			long time2 = System.currentTimeMillis();
 			System.out.println("敏感词数量:"+nodes.size());
 			System.out.println("加载过滤库时间" + (time2 - time1) +"ms");
@@ -57,11 +58,7 @@ public class WordFilter {
 	private static List<String> readWordFromFile(KeywordType type) {
 		List<String> words = new ArrayList<String>();
 		List<Map<String,Object>> data = null;
-		if(type == KeywordType.FILTER)
-			data = DbHelper.getInstance().select("select keywords from filter_wd");
-		else
-			data = DbHelper.getInstance().select("select keywords from stop_wd");
-		
+		data = DbHelper.getInstance().select("select keywords from filter_wd");
 		for(Map<String,Object> rows : data) {
 			words.add(rows.get("keywords").toString());
 		}

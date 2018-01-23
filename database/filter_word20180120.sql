@@ -42,7 +42,6 @@ CREATE TABLE `stop_wd` (
 -- ----------------------------
 -- Records of stop_wd
 -- ----------------------------
-INSERT INTO `stop_wd` VALUES ('');
 INSERT INTO `stop_wd` VALUES ('!');
 INSERT INTO `stop_wd` VALUES ('\"');
 INSERT INTO `stop_wd` VALUES ('#');
