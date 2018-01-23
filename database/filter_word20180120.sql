@@ -25,36 +25,3 @@ CREATE TABLE IF NOT EXISTS `filter_wd` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `keywords_unique_filter` (`keywords`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
-
--- ----------------------------
--- Records of filter_wd
--- ----------------------------
-
--- ----------------------------
--- Table structure for stop_wd
--- ----------------------------
-DROP TABLE IF EXISTS `stop_wd`;
-CREATE TABLE `stop_wd` (
-  `keywords` varchar(10) DEFAULT NULL,
-  UNIQUE KEY `keywords_unique` (`keywords`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of stop_wd
--- ----------------------------
-INSERT INTO `stop_wd` VALUES ('!');
-INSERT INTO `stop_wd` VALUES ('\"');
-INSERT INTO `stop_wd` VALUES ('#');
-INSERT INTO `stop_wd` VALUES ('$');
-INSERT INTO `stop_wd` VALUES ('%');
-INSERT INTO `stop_wd` VALUES ('&');
-INSERT INTO `stop_wd` VALUES ('(');
-INSERT INTO `stop_wd` VALUES (')');
-INSERT INTO `stop_wd` VALUES ('*');
-INSERT INTO `stop_wd` VALUES (',');
-INSERT INTO `stop_wd` VALUES ('.');
-INSERT INTO `stop_wd` VALUES ('/');
-INSERT INTO `stop_wd` VALUES (';');
-INSERT INTO `stop_wd` VALUES ('?');
-INSERT INTO `stop_wd` VALUES ('@');
-INSERT INTO `stop_wd` VALUES ('|');
