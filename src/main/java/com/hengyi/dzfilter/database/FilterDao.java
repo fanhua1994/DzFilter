@@ -2,10 +2,6 @@ package com.hengyi.dzfilter.database;
 
 import java.util.List;
 import java.util.Map;
-
-import com.hengyi.dzfilter.utils.ActivemqUtils;
-import com.hengyi.dzfilter.utils.PropertiesUtils;
-import com.hengyi.dzfilter.wordfilter.WordFilter;
 /**
  * 操作过滤库的Dao
  * @author Administrator
