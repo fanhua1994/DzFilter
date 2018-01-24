@@ -7,6 +7,9 @@
 
 # 使用指南
 [Spring使用指南](https://github.com/fanhua1994/DzFilter/blob/master/spring-use-guide.md)
+[SpringMvcDemo](https://github.com/fanhua1994/DzFilterSpringDemo)
+SpringBoot尽情期待...
+Java se 尽情期待...
 
 # DzFilter
 使用DFA算法实现的敏感词过滤。主要用于实现数据文本的内容安全,反垃圾,智能鉴黄,敏感词过滤,不良信息检测，携带文本的关键词获取。
