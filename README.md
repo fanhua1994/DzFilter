@@ -3,7 +3,8 @@
 
 
 # 公告
-> 最近在对DzFilter支持分布式功能上进行整改，目前1.0.6版本已经发布，暂时只支持在Mysql数据库上才支持集群模式，1.0.7版本中我将会进行修复，支持SQLite数据库。目前1.0.7版本正在更新中，使用的使用数据库请导入最新的20180120后缀的数据库。目前1.0.7已经完善，暂时不支持sqlite强一致性，不能100%保证一致。
++ 目前1.0.7已经完善，暂时不支持sqlite强一致性，不能100%保证一致。
++ 修复了集群情况下，重复通知的BUG。
 
 # 使用指南
 + [Spring配置指南](https://github.com/fanhua1994/DzFilter/blob/master/spring-use-guide.md)
@@ -12,6 +13,7 @@
 + Java se 尽情期待...
 
 # DzFilter
+目前最新版：1.0.7[更新日志](https://github.com/fanhua1994/DzFilter/blob/master/log.md)]
 使用DFA算法实现的敏感词过滤。主要用于实现数据文本的内容安全,反垃圾,智能鉴黄,敏感词过滤,不良信息检测，携带文本的关键词获取。
 + 过滤SQL脚本
 + 过滤中文字符
@@ -141,4 +143,20 @@ int total = TextUtils.getDataTotal();
 ```
 HanKp:[内江市, 自贡市, 眉山市, 西北, 资中县, 荣县, 四川, 中南部, 之间, 南连]
 DzFilter:[内江市, 自贡市, 大安区, 市中区, 四川盆地, 威远县, 资中县, 荣县, 四川省, 中南部]
+```
+
+```
+Copyright 2018 fanhua1994
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```

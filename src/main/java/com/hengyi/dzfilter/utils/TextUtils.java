@@ -201,8 +201,18 @@ public class TextUtils {
 	 * @return
 	 */
 	public static int addFilter(String keywords) {
+		return addFilter(keywords,true);
+	}
+	
+	/**
+	 * 
+	 * @param keywords
+	 * @param sync	是否同步命令道其他集群
+	 * @return
+	 */
+	public static int addFilter(String keywords,boolean sync) {
 		int result_id =  FilterDao.getInstance().addFilter2(keywords);
-		if(result_id > 0) {
+		if(result_id > 0 && sync) {
 			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open")) {
 				ActivemqUtils.SendObjectMessage(result_id,Config.CMD_ADD,PropertiesUtils.getValue("dzfilter.cluster.server_id"),keywords);
 			}
@@ -211,15 +221,25 @@ public class TextUtils {
 		return result_id;
 	}
 	
-	
 	/**
 	 * 删除敏感词
 	 * @param keywords
 	 * @return
 	 */
 	public static int delFilter(String keywords) {
+		return delFilter(keywords,true);
+	}
+	
+	
+	/**
+	 * 
+	 * @param keywords
+	 * @param sync		是否同步命令道其他集群
+	 * @return
+	 */
+	public static int delFilter(String keywords,boolean sync) {
 		int result_id =  FilterDao.getInstance().delFilter2(keywords);
-		if(result_id  > 0) {
+		if(result_id  > 0 && sync) {
 			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open")) {
 				ActivemqUtils.SendObjectMessage(result_id,Config.CMD_DELETE,PropertiesUtils.getValue("dzfilter.cluster.server_id"),keywords);
 			}
@@ -261,6 +281,19 @@ public class TextUtils {
 	 * 同步关键词  适用于分布式同步
 	 */
 	public static void sync() {
+		sync(false);
+	}
+	
+	/**
+	 * 只有mysql才能使用强一致性
+	 * @param sync	是否同步命令道其他集群
+	 */
+	public static void sync(boolean sync) {
 		WordFilter.resetInit();
+		if(sync) {
+			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open") && PropertiesUtils.getBooleanValue("dzfilter.db.is_mysql")) {
+				ActivemqUtils.SendObjectMessage(0,Config.CMD_SYNC,PropertiesUtils.getValue("dzfilter.cluster.server_id"),"SYNC");
+			}
+		}
 	}
 }

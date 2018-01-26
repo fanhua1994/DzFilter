@@ -25,24 +25,28 @@ public class SyncMessageListener implements MessageListener{
 			}
 			
 			switch(mqMessage.getCmd()) {
+			case Config.CMD_SYNC:
+				if(is_mysql)
+					TextUtils.sync(false);
+				break;
 			case Config.CMD_ADD:
 				if(is_mysql) {
-					TextUtils.sync();
+					TextUtils.sync(false);
 				}else {
 					int result_id = TextUtils.addFilter(mqMessage.getMessage());
 					if(result_id > 0) {
-						TextUtils.sync();
+						TextUtils.sync(false);
 					}
 				}
 				break;
 				
 			case Config.CMD_DELETE:
 				if(is_mysql) {
-					TextUtils.sync();
+					TextUtils.sync(false);
 				}else {
 					int result_id = TextUtils.delFilter(mqMessage.getMessage());
 					if(result_id > 0) {
-						TextUtils.sync();
+						TextUtils.sync(false);
 					}
 				}
 				break;
