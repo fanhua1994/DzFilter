@@ -33,10 +33,7 @@ public class SyncMessageListener implements MessageListener{
 				if(is_mysql) {
 					TextUtils.sync(false);
 				}else {
-					int result_id = TextUtils.addFilter(mqMessage.getMessage());
-					if(result_id > 0) {
-						TextUtils.sync(false);
-					}
+					TextUtils.addFilter(mqMessage.getMessage(),false);
 				}
 				break;
 				
@@ -44,10 +41,7 @@ public class SyncMessageListener implements MessageListener{
 				if(is_mysql) {
 					TextUtils.sync(false);
 				}else {
-					int result_id = TextUtils.delFilter(mqMessage.getMessage());
-					if(result_id > 0) {
-						TextUtils.sync(false);
-					}
+					TextUtils.delFilter(mqMessage.getMessage(),false);
 				}
 				break;
 			}
