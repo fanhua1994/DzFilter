@@ -126,9 +126,27 @@ List<Map<String,Object>> rows = TextUtils.getDataOffset(int offset,int limit);�
 int total = TextUtils.getDataTotal();
 ```
 ### 刷新敏感词
-TextUtils.sync(boolean sync);
+```
+TextUtils.sync(boolean sync);`
+```
 
 `sync`参数是否同步刷新整个集群。仅mysql数据库生效、
+
+### 关键词提取
+```
+String extractKeyword(String content,int count,boolean isPinyin,String separator)
+List<String> extractKeyword(String content,int count);
+```
+`content`需要提取关键词的文本，
+`count`取药提取的关键词总数，会按照投票选举。
+`isPinyin`是否将关键词转化为拼音。
+`separator`设置分隔符。
+
+demo: 
+```
+String k = TextUtils.extractKeyword("今天是我的生日",3,true,"#");
+k = "jintian#shengri#wode";
+```
 
 
 ## 关键词替换方案已找到
