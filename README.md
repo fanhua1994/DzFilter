@@ -106,7 +106,7 @@ dzfilter.cluster.password=admin
 多个项目之间需要保证`dzfilter.cluster.channel_name`参数一致。
 您只需要在多个项目中同时使用Activemq消费者监听`com.hengyi.dzfilter.listener.SyncMessageListener`即可。
 
-## 如何自定义过滤服务
+## 部分核心API
 
 ### 添加自定义关键词过滤
 ```
@@ -125,6 +125,10 @@ List<Map<String,Object>> rows = TextUtils.getDataOffset(int offset,int limit);�
 ```
 int total = TextUtils.getDataTotal();
 ```
+### 刷新敏感词
+TextUtils.sync(boolean sync);
+
+`sync`参数是否同步刷新整个集群。仅mysql数据库生效、
 
 
 ## 关键词替换方案已找到
