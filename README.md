@@ -43,7 +43,7 @@
 <dependency>
     <groupId>com.github.fanhua1994</groupId>
     <artifactId>DzFilter</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.8.2</version>
 </dependency>
 ```
 
