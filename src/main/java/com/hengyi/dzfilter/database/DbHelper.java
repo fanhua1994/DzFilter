@@ -37,7 +37,7 @@ public class DbHelper {
 				DBDRIVER = PropertiesUtils.getValue("dzfilter.db.driver");
 				DBUSER = PropertiesUtils.getValue("dzfilter.db.dbuser");
 				DBPASS = PropertiesUtils.getValue("dzfilter.db.dbpass");
-				ISMYSQL = PropertiesUtils.getBooleanValue("dzfilter.db.is_mysq");
+				ISMYSQL = PropertiesUtils.getBooleanValue("dzfilter.db.is_mysql");
 				instance = new DbHelper();
 			}
 		}

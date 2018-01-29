@@ -8,7 +8,20 @@ import com.hengyi.dzfilter.keywords.KeywordUtils;
 public class App4 { 
 	 
 	 public static void main(String[] args) { 
-		 String key = "韩国乐天集团会长辛东彬因涉嫌贪污1700亿韩元(约合人民币10.3亿元)和渎职被韩国检方提起诉讼。12月14日，韩国检方提请法院判处韩国前总统朴槿惠“亲信干政”事件核心人物崔顺实有期徒刑25年，检方同时要求法院判处涉嫌行贿的乐天集团会长辛东彬入狱4年。辛东彬曾表示自己无法逆父亲辛格浩的心意行事，所犯所有罪行都是辛格浩指示的。";
+		 String key = "rabbit配置文件：\r\n" + 
+		 		"\r\n" + 
+		 		"<!--这里是连接rabbitmq的服务器-->\r\n" + 
+		 		"\r\n" + 
+		 		"<rabbit:connection-factoryid=\"connectionFactory\"host=\"localhost\"username=\"guest\"password=\"guest\"/>\r\n" + 
+		 		"\r\n" + 
+		 		"<!--这是用来发送消息的时候用到，在rabbitmq里面实际上只能用Message,内部将调用\r\n" + 
+		 		"\r\n" + 
+		 		"send(exchange, routingKey, convertMessageIfNecessary(object),correlationData);\r\n" + 
+		 		"\r\n" + 
+		 		"来将用户的对象转成message，这个在转换里面就用到了-->\r\n" + 
+		 		" <beanid=\"jsonMessageConverter\"class=\"org.springframework.amqp.support.converter.JsonMessageConverter\"/>\r\n" + 
+		 		"\r\n" + 
+		 		"<!-- 用来发送消息，这里制定了交换区的名字、路由关键字的名字以及消息的“转换器”-->";
 		
 		 try {
 			List<String> data2 = KeywordUtils.getKeyWords(key, 20);

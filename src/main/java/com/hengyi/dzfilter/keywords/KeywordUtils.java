@@ -86,7 +86,7 @@ public class KeywordUtils {
 		  for(int i=0; i< list.size(); i++) { //循环排序后的数组 
 			   if (i < num) {
 				   keywords.add(list.get(i).getKey()); //设置关键字进入数组 
-				   System.out.println(list.get(i).getKey() +":投票数 = " + list.get(i).getValue());
+				   //System.out.println(list.get(i).getKey() +":投票数 = " + list.get(i).getValue());
 			   } 
 		  } 
 		  return keywords; 
