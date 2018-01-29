@@ -13,8 +13,8 @@ import com.hengyi.dzfilter.keywords.KeywordUtils;
 import com.hengyi.dzfilter.wordfilter.WordFilter;
 
 /**
- * 关键词辅助类
- * @author Administrator
+ * 过滤辅助类
+ * @author Fanhua
  *
  */
 public class TextUtils {
@@ -25,7 +25,7 @@ public class TextUtils {
 	 * @return
 	 */
 	public static String delSqlSymbol(String key) {
-		String regEx="(select|insert|update|delete)"; 
+		String regEx="(?i)(select|insert|update|delete)"; 
 		Pattern p = Pattern.compile(regEx); 
 		Matcher m = p.matcher(key);
 		return m.replaceAll("").trim();
@@ -274,12 +274,12 @@ public class TextUtils {
 	 * 获取敏感词总数
 	 * @return
 	 */
-	public static int getDataTotal() {
+	public static int getFilterDataTotal() {
 		return FilterDao.getInstance().getFilterCount();
 	}
 	
 	/**
-	 * 同步关键词  适用于分布式同步
+	 * 同步关键词  适用于分布式同步  默认不同步
 	 */
 	public static void sync() {
 		sync(false);

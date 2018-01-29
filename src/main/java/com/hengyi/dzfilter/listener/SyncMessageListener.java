@@ -48,7 +48,5 @@ public class SyncMessageListener implements MessageListener{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
-
 }
