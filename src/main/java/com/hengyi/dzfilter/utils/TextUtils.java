@@ -106,10 +106,11 @@ public class TextUtils {
 	 * @param htmlStr
 	 * @return
 	 */
-	public static String delTag(String htmlStr){ 
+	public static String delHtmlTag(String htmlStr){ 
         String regEx_script="<script[^>]*?>[\\s\\S]*?<\\/script>"; //定义script的正则表达式 
         String regEx_style="<style[^>]*?>[\\s\\S]*?<\\/style>"; //定义style的正则表达式 
         String regEx_html="<[^>]+>"; //定义HTML标签的正则表达式 
+        String regEx_line = "(\\r\\n|\\n|\\t|\\s*)";
          
         Pattern p_script = Pattern.compile(regEx_script,Pattern.CASE_INSENSITIVE); 
         Matcher m_script = p_script.matcher(htmlStr); 
@@ -123,6 +124,10 @@ public class TextUtils {
         Matcher m_html = p_html.matcher(htmlStr); 
         htmlStr = m_html.replaceAll(""); //过滤html标签 
 
+        
+        Pattern p_line = Pattern.compile(regEx_line,Pattern.CASE_INSENSITIVE); 
+        Matcher m_line = p_line.matcher(htmlStr); 
+        htmlStr = m_line.replaceAll(""); //过滤html标签 
         return htmlStr.trim(); //返回文本字符串
     }
 

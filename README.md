@@ -149,6 +149,18 @@ String k = TextUtils.extractKeyword("今天是我的生日",3,true,"#");
 k = "jintian#shengri#wode";
 ```
 
+### 获取网页的关键词
+```
+String key = HttpHelper.getInstance().httpGet("https://www.jianshu.com/p/fcd0c097d38c");
+key = TextUtils.delHtmlTag(key);
+try {
+	List<String> data2 = KeywordUtils.getKeyWords(key, 20);
+	System.out.println("IK:" + data2.toString());
+} catch (IOException e) {
+	e.printStackTrace();
+}
+```
+
 
 ```
 Copyright 2018 fanhua1994

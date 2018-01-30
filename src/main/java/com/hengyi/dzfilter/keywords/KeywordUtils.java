@@ -26,9 +26,9 @@ public class KeywordUtils {
 	  */
 	 private static List<String> extract(String article) throws IOException { 
 		List<String> list =new ArrayList<String>();
-		IKAnalyzer analyzer = new IKAnalyzer(false);  
+		IKAnalyzer analyzer = new IKAnalyzer(true);  
 		analyzer.setUseSmart(true);//开启智能分词
-        TokenStream tokenStream = analyzer.tokenStream("content", new StringReader(article));  
+        TokenStream tokenStream = analyzer.tokenStream("", new StringReader(article));  
         CharTermAttribute term= tokenStream.addAttribute(CharTermAttribute.class);    
         tokenStream.reset();  
         String keyword = null;
