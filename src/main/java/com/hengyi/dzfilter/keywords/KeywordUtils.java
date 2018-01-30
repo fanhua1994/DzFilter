@@ -1,7 +1,6 @@
 package com.hengyi.dzfilter.keywords;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import com.hengyi.dzfilter.utils.TextUtils;
@@ -26,20 +23,31 @@ public class KeywordUtils {
 	  */
 	 private static List<String> extract(String article) throws IOException { 
 		List<String> list =new ArrayList<String>();
-		IKAnalyzer analyzer = new IKAnalyzer(true);  
-		analyzer.setUseSmart(true);//开启智能分词
-        TokenStream tokenStream = analyzer.tokenStream("", new StringReader(article));  
-        CharTermAttribute term= tokenStream.addAttribute(CharTermAttribute.class);    
-        tokenStream.reset();  
-        String keyword = null;
-        while(tokenStream.incrementToken()){ 
-        	keyword = term.toString();
-        	if(keyword.length() > 1)
-            list.add(keyword);
-        }    
-	    tokenStream.end();  
-	    tokenStream.close();  
-	    analyzer.close();
+		//将文字存到目录里面
+		IKAnalyzer analyzer = new IKAnalyzer(true);
+		IndexWriterConfig indexWriterConfig = new IndexWriterConfig(analyzer);
+        indexWriterConfig.setOpenMode(OpenMode.CREATE);
+        // 索引的存储路径
+        Directory directory = null;
+        // 索引的增删改由indexWriter创建
+        IndexWriter indexWriter = null;
+        directory = FSDirectory.open(Paths.get("indexdir"));
+        indexWriter = new IndexWriter(directory, indexWriterConfig);
+
+        // 新建FieldType,用于指定字段索引时的信息
+        FieldType type = new FieldType();
+        // 索引时保存文档、词项频率、位置信息、偏移信息
+        type.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);
+        type.setStored(true);// 原始字符串全部被保存在索引中
+        type.setStoreTermVectors(true);// 存储词项量
+        type.setTokenized(true);// 词条化
+        Document doc1 = new Document();
+        Field field1 = new Field("content", text1, type);
+        doc1.add(field1);
+        indexWriter.addDocument(doc1);
+        indexWriter.close();
+        directory.close();
+     
 	  return list; 
 	 } 
 	 
