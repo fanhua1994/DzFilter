@@ -70,7 +70,7 @@ boolean existFilter(String content)
 Mysql配置文件如下
 ```
 dzfilter.db.driver=org.sqlite.JDBC
-dzfilter.db.dburl=jdbc:mysql://120.77.245.101:3306/filter_word?useUnicode\=true&characterEncoding\=utf-8&autoReconnect\=true
+dzfilter.db.dburl=jdbc:mysql://120.77.245.xxx:3306/filter_word?useUnicode\=true&characterEncoding\=utf-8&autoReconnect\=true
 dzfilter.db.is_mysql=true
 #如何您是使用mysql请配置以下信息
 dzfilter.db.dbuser=root
