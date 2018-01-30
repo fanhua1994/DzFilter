@@ -100,6 +100,13 @@ public class TextUtils {
 		return m.replaceAll("").trim();
 	}
 	
+	public static String delSpaceAndLineTag(String key) {
+		String regEx="(\\r\\n|\\n|\\t|\\s*)"; 
+		Pattern p = Pattern.compile(regEx); 
+		Matcher m = p.matcher(key);
+		return m.replaceAll("").trim();
+	}
+	
 	
 	/**
 	 * 过滤所有标签
