@@ -15,8 +15,8 @@ public class FilterDao {
 			if(instance == null) {
 				instance = new FilterDao();
 			}
+			return instance;
 		}
-		return instance;
 	}
 	
 	/**

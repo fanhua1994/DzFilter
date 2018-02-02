@@ -6,8 +6,7 @@ package com.hengyi.dzfilter.config;
  *
  */
 public class Config {
-	
 	public static final int CMD_ADD = 1;//添加命令
 	public static final int CMD_DELETE = 2;//删除命令
-	public static final int CMD_SYNC = 3;//同步
+	public static final int CMD_SYNC = 3;//同步数据命令
 }

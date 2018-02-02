@@ -27,6 +27,7 @@ import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.BytesRef;
 
 public class KeywordUtils {
+	
 	 /** 
 	  * 传入String类型的文章，智能提取单词放入list中 
 	  * @param article 
@@ -34,9 +35,8 @@ public class KeywordUtils {
 	  * @return 
 	  * @throws IOException 
 	  */
-	 private static List<String> extract(String article,int num) throws IOException { 
+	 private static List<String> parseKeywords(String article,int num) throws IOException { 
 		
-		//将文字存到目录里面
 		Analyzer analyzer = new MyIkAnalyzer();
 		IndexWriterConfig indexWriterConfig = new IndexWriterConfig(analyzer);
         indexWriterConfig.setOpenMode(OpenMode.CREATE);
@@ -69,10 +69,10 @@ public class KeywordUtils {
         // 遍历词项
         TermsEnum termsEnum = terms.iterator();
         BytesRef thisTerm = null;
+        String termText = null;
         Map<String, Integer> map = new HashMap<String, Integer>();
         while ((thisTerm = termsEnum.next()) != null) {
-            // 词项
-            String termText = thisTerm.utf8ToString();
+            termText = thisTerm.utf8ToString();
             if(termText.length() > 1)
             	map.put(termText, (int) termsEnum.totalTermFreq());
         }
@@ -96,7 +96,6 @@ public class KeywordUtils {
     private static List<String> getTopN(List<Entry<String, Integer>> sortedMap, int N) {
     	List<String> list =new ArrayList<String>();
         for (int i = 0; i < N; i++) {
-            //System.out.println(sortedMap.get(i).getKey() + "::" + sortedMap.get(i).getValue());
         	list.add(sortedMap.get(i).getKey());
         }
         return list;
@@ -112,6 +111,6 @@ public class KeywordUtils {
 	  * @throws IOException 
 	  */
 	 public static List<String> getKeyWords(String content,Integer num) throws IOException { 
-		 return extract(content,num);
+		 return parseKeywords(content,num);
 	 } 
 }

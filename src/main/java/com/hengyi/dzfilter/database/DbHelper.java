@@ -18,7 +18,6 @@ import com.hengyi.dzfilter.utils.PropertiesUtils;
  *
  */
 public class DbHelper {
-	
 	private static DbHelper instance = null;
     private static String DBDRIVER = null;  
     private static String DBURL = null;  
@@ -40,8 +39,8 @@ public class DbHelper {
 				ISMYSQL = PropertiesUtils.getBooleanValue("dzfilter.db.is_mysql");
 				instance = new DbHelper();
 			}
+			return instance;
 		}
-		return instance;
 	}
 	
 	/**
