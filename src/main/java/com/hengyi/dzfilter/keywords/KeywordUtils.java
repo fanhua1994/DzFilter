@@ -36,7 +36,6 @@ public class KeywordUtils {
 	  * @throws IOException 
 	  */
 	 private static List<String> parseKeywords(String article,int num) throws IOException { 
-		
 		Analyzer analyzer = new MyIkAnalyzer();
 		IndexWriterConfig indexWriterConfig = new IndexWriterConfig(analyzer);
         indexWriterConfig.setOpenMode(OpenMode.CREATE);

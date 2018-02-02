@@ -10,8 +10,7 @@
 # 使用指南
 + [Spring配置指南](https://github.com/fanhua1994/DzFilter/blob/master/spring-use-guide.md)
 + [SpringMvcDemo](https://github.com/fanhua1994/DzFilterSpringDemo)
-+ SpringBoot尽情期待...
-+ Java se 尽情期待...
++ SpringBoot举一反三即可.
 
 # DzFilter
 目前最新版：1.0.8.2[[更新日志](https://github.com/fanhua1994/DzFilter/blob/master/log.md)]
@@ -59,7 +58,7 @@ boolean existFilter(String content)
 
 
 ## 配置数据库
-> 如果```DzFilter```您需要使用在分布式的系统或同时在多个程序中使用```DzFilter```并且需要保持一致性，那么我们建议您使用mysql数据库，如果是单击应用我们建议您使用sqlite数据库。数据库文件在项目目录下的database下。放到对应目录  配置好就行了。如果想使用mysql的话，请自行导入mysql驱动，并将database目录下的java_filter.sql导入mysql然后在dzfilter_config.properties配置 用户名密码等信息即可。
+> 如果您需要使用在分布式的系统或同时在多个程序中使用```DzFilter```并且需要保持一致性，那么我们建议您使用mysql数据库，如果是单击应用我们建议您使用sqlite数据库。数据库文件在项目目录下的database下。放到对应目录  配置好就行了。如果想使用mysql的话，请自行导入mysql驱动，并将database目录下的java_filter.sql导入mysql然后在dzfilter_config.properties配置 用户名密码等信息即可。
 ```
 <dependency>
     <groupId>mysql</groupId>
@@ -69,7 +68,7 @@ boolean existFilter(String content)
 ```
 Mysql配置文件如下
 ```
-dzfilter.db.driver=org.sqlite.JDBC
+dzfilter.db.driver=com.mysql.jdbc.Driver
 dzfilter.db.dburl=jdbc:mysql://120.77.245.xxx:3306/filter_word?useUnicode\=true&characterEncoding\=utf-8&autoReconnect\=true
 dzfilter.db.is_mysql=true
 #如何您是使用mysql请配置以下信息
