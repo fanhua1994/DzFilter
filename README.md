@@ -92,7 +92,7 @@ dzfilter.db.is_mysql=false
 dzfilter.db.dbuser=root
 dzfilter.db.dbpass=***
 
-# 目前在SQLite数据库上暂时不支持集群模式
+# 目前在SQLite数据库集群暂时没法保证一致性
 dzfilter.cluster.open=false
 dzfilter.cluster.activemq=tcp://192.168.0.106:61616
 dzfilter.cluster.server_id=192.168.0.105
