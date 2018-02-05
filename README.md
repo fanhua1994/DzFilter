@@ -5,7 +5,7 @@
 # 公告
 + 目前1.0.7已经完善，暂时不支持sqlite强一致性，不能100%保证一致。
 + 修复了集群情况下，重复通知的BUG。
-+ 2.0.0版本正在开发中，将会替换掉ActiveMQ改为阿里巴巴高性能RocketMQ。
++ 2.0.0版本正在开发中，将会替换掉改为高性能RabbitMQ。
 
 # 使用指南
 + [Spring配置指南](https://github.com/fanhua1994/DzFilter/blob/master/spring-use-guide.md)
