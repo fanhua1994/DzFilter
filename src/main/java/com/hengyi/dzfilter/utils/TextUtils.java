@@ -8,8 +8,6 @@ import java.util.regex.Pattern;
 
 import com.hengyi.dzfilter.config.Config;
 import com.hengyi.dzfilter.database.FilterDao;
-import com.hengyi.dzfilter.keywords.ChineseToPinyin;
-import com.hengyi.dzfilter.keywords.KeywordUtils;
 import com.hengyi.dzfilter.wordfilter.WordFilter;
 
 /**
@@ -152,46 +150,6 @@ public class TextUtils {
         htmlStr = m_script.replaceAll(""); //过滤script标签 
         return htmlStr.trim(); //返回文本字符串 
     }
-	
-	/**
-	 * 提取关键词  返回关键词
-	 * @param content
-	 * @param count
-	 * @param isPinyin
-	 * @param separator
-	 * @return
-	 */
-	public static String extractKeyword(String content,int count,boolean isPinyin,String separator) {
-		List<String> data = extractKeyword(content,count);
-		if(data == null)
-			return null;
-		StringBuffer sb = new StringBuffer();
-		String keyword = null;
-		for(int i = 0;i<data.size();i++) {
-			keyword = data.get(i);
-			if(isPinyin)
-				sb.append(ChineseToPinyin.getFullSpell(keyword));
-			else
-				sb.append(keyword);
-			sb.append(separator);
-		}
-		data.clear();
-		if(sb.length() > 0)
-			return sb.toString().substring(0,sb.length() - 1);
-		else
-			return ChineseToPinyin.getFullSpell(content);
-	}
-	
-	public static List<String> extractKeyword(String content,int count){
-		List<String> data = null;
-		try {
-			data = KeywordUtils.getKeyWords(content, count);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return data;
-	}
 	
 	/**
 	 * 过滤敏感词

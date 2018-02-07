@@ -4,7 +4,7 @@
 
   <groupId>com.zhiweism</groupId>
   <artifactId>DzFilter</artifactId>
-  <version>1.0.8.1</version>
+  <version>1.0.9</version>
   <packaging>jar</packaging>
   <name>DzFilter</name>
   <url>http://maven.apache.org</url>
@@ -14,56 +14,6 @@
   </properties>
 
   <dependencies>
-    <!-- 关键词 -->
-	<dependency>
-	    <groupId>com.janeluo</groupId>
-	    <artifactId>ikanalyzer</artifactId>
-	    <version>2012_u6</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.apache.lucene</groupId>
-	    <artifactId>lucene-analyzers-common</artifactId>
-	    <version>6.0.0</version>
-	</dependency>
-	
-	<dependency>  
-        <groupId>org.apache.lucene</groupId>  
-        <artifactId>lucene-analyzers-smartcn</artifactId>  
-        <version>6.0.0</version>  
-    </dependency>  
-
-	
-	<dependency>
-	    <groupId>org.apache.lucene</groupId>
-	    <artifactId>lucene-core</artifactId>
-	    <version>6.0.0</version>
-	</dependency>
-	 
-	<dependency>
-	    <groupId>org.apache.lucene</groupId>
-	    <artifactId>lucene-highlighter</artifactId>
-	    <version>6.0.0</version>
-	</dependency>
-	
-	<dependency> 
-    	<groupId>org.apache.lucene</groupId>
-	    <artifactId>lucene-memory</artifactId>
-	    <version>6.0.0</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.apache.lucene</groupId>
-	    <artifactId>lucene-queries</artifactId>
-	    <version>6.0.0</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.apache.lucene</groupId>
-	    <artifactId>lucene-queryparser</artifactId>
-	    <version>6.0.0</version>
-	</dependency>
-     
      <!-- 数据库 -->
       <dependency>
 	    <groupId>mysql</groupId>
