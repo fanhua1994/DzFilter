@@ -1,6 +1,5 @@
 package com.hengyi.dzfilter.utils;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -184,7 +183,6 @@ public class TextUtils {
 		int result_id =  FilterDao.getInstance().addFilter2(keywords);
 		if(result_id > 0 && sync) {
 			if(PropertiesUtils.getBooleanValue("dzfilter.cluster.open")) {
-				System.out.print("发布消息");
 				ActivemqUtils.SendObjectMessage(result_id,Config.CMD_ADD,PropertiesUtils.getValue("dzfilter.cluster.server_id"),keywords);
 			}
 		}

@@ -32,11 +32,14 @@ public class DbHelper {
 	public static synchronized DbHelper getInstance(){
 		synchronized(DbHelper.class) {
 			if(instance == null) {
+				ISMYSQL = PropertiesUtils.getBooleanValue("dzfilter.db.is_mysql");
 				DBURL = PropertiesUtils.getValue("dzfilter.db.dburl");
 				DBDRIVER = PropertiesUtils.getValue("dzfilter.db.driver");
-				DBUSER = PropertiesUtils.getValue("dzfilter.db.dbuser");
-				DBPASS = PropertiesUtils.getValue("dzfilter.db.dbpass");
-				ISMYSQL = PropertiesUtils.getBooleanValue("dzfilter.db.is_mysql");
+				if(ISMYSQL) {
+					DBUSER = PropertiesUtils.getValue("dzfilter.db.dbuser");
+					DBPASS = PropertiesUtils.getValue("dzfilter.db.dbpass");
+				}
+				
 				instance = new DbHelper();
 			}
 			return instance;
