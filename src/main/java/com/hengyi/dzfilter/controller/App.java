@@ -9,7 +9,7 @@ public class App
 {
     public static void main( String[] args )
     {
-    	String res = TextUtils.delSqlSymbol("ddUPDATE666666select&&&&&&dd");
+    	String res = TextUtils.filter("我是董志平，你好");
     	System.out.println(res);
     }
 }

@@ -18,7 +18,7 @@ public class WordFilter {
 	private enum FilterState{SUCCESS,ERROR};
 	private enum KeywordType {FILTER,STOP};
 	private static FilterState FilterStatus =  FilterState.ERROR;
-	private static List<Integer> set = new ArrayList<Integer>(); // 存储首字
+	private static Map<Integer,Integer> set = new HashMap<Integer,Integer>(); // 存储首字
 	private static Map<Integer, WordNode> nodes = new HashMap<Integer, WordNode>(); // 存储节点
 	private static Set<Integer> stopwdSet = new HashSet<Integer>(); // 停顿词
 	private static char SIGN = '*'; // 敏感词过滤替换
@@ -98,8 +98,8 @@ public class WordFilter {
 				if(chs.length  == 0)
 					continue;
 				fchar = charConvert(chs[0]);
-				if (!set.contains(fchar)) {// 没有首字定义
-					set.add(fchar);// 首字标志位 可重复add,反正判断了，不重复了
+				if (!set.containsKey(fchar)) {// 没有首字定义
+					set.put(fchar, fchar);// 首字标志位 可重复add,反正判断了，不重复了
 					fnode = new WordNode(fchar, chs.length == 1);
 					nodes.put(fchar, fnode);
 				} else {
@@ -129,7 +129,7 @@ public class WordFilter {
 		WordNode node;
 		for (int i = 0; i < length; i++) {
 			currc = charConvert(chs[i]);
-			if (!set.contains(currc)) {
+			if (!set.containsKey(currc)) {
 				continue;
 			}
 			node = nodes.get(currc);// 日 2
@@ -178,7 +178,7 @@ public class WordFilter {
 		WordNode node;
 		for (int i = 0; i < length; i++) {
 			currc = charConvert(chs[i]);
-			if (!set.contains(currc)) {
+			if (!set.containsKey(currc)) {
 				continue;
 			}
 			node = nodes.get(currc);// 日 2

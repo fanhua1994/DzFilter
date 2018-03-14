@@ -7,7 +7,7 @@ package com.hengyi.dzfilter.wordfilter;
  * 
  * 全角/半角转换
  * 
- * @author andy
+ * @author fanhua
  * @version 2.2
  */
 public class BCConvert {
