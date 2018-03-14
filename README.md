@@ -6,7 +6,7 @@
 + 目前1.0.7已经完善，暂时不支持sqlite强一致性，不能100%保证一致。
 + 修复了集群情况下，重复通知的BUG。
 + 1.0.9 版本移除关键词检索功能，如需使用请自行维护。
-+ 2.0.0版本正在开发中，将会替换掉改为高性能RabbitMQ。
++ 1.1.0 优化敏感词加载性能。
 
 # 使用指南
 + [Spring配置指南](https://github.com/fanhua1994/DzFilter/blob/master/spring-use-guide.md)
@@ -14,7 +14,7 @@
 + SpringBoot举一反三即可.
 
 # DzFilter
-目前最新版：1.0.9[[更新日志](https://github.com/fanhua1994/DzFilter/blob/master/log.md)]
+目前最新版：1.1.0[[更新日志](https://github.com/fanhua1994/DzFilter/blob/master/log.md)]
 
 使用DFA算法实现的敏感词过滤。主要用于实现数据文本的内容安全,反垃圾,智能鉴黄,敏感词过滤,不良信息检测，携带文本的关键词获取。
 + 过滤SQL脚本
@@ -43,7 +43,7 @@
 <dependency>
     <groupId>com.github.fanhua1994</groupId>
     <artifactId>DzFilter</artifactId>
-    <version>1.0.9</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
