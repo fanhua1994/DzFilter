@@ -1,5 +1,5 @@
 # copyright
-> 不管您是个人还是公司都可以随意使用`DzFilter`,公司或个人用于商业情况时，必须要[issues](https://github.com/fanhua1994/DzFilter/issues)中提出使用说明得到同意后方可使用。任何人可以随意修改源码，修改后请务必发一份修改的后的源码到作者邮箱（90fanhua@gmail.com）。
+> 不管您是个人还是公司都可以随意使用`DzFilter`，并且随意修改源代码。感谢大家的使用！
 
 
 # 公告
