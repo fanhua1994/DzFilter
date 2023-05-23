@@ -24,7 +24,7 @@
 	<dependency>
 		<groupId>org.xerial</groupId>
 		<artifactId>sqlite-jdbc</artifactId>
-		<version>3.7.2</version>
+		<version>3.41.2.2</version>
 	</dependency> 
      
     <!-- 同步消息队列 -->
